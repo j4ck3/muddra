@@ -1,0 +1,14 @@
+﻿@model HomeViewModel
+
+
+<partial name="../Shared/Sections/_Landing" model="Model.Landing" />
+<partial name="../Shared/Sections/_ServicesGrid" model="Model.ServicesGrid" />
+
+@if (TempData.ContainsKey("ErrorMessage"))
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<partial name="../Shared/Components/_CreateService" model="Model.CreateService"/>
+

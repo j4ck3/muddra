@@ -1,0 +1,29 @@
+﻿@model ServiceItemViewModel
+
+<div>
+    <div>
+        @if (Model.ImageUrl != null)
+        {
+            if (Model.ImageUrl.Contains("/"))
+            {
+                <img class="model-item-img" src="@Model.ImageUrl" alt="@Model.Title" />
+            }
+            else
+            {
+                <img class="model-item-img" src="@Url.Content("~/Assets/Imgs/Services/" + Model.ImageUrl)" alt="@Model.ImageUrl" />
+            }
+        }
+    </div>
+    <div class="d-flex justify-content-between align-items-end">
+        <div>
+            @if (Model.Title != null)
+            {
+                <h2>@Model.Title</h2>
+            }
+            @if (Model.Description != null)
+            {
+                <span>@Model.Description</span>
+            }
+        </div>
+    </div>
+</div>

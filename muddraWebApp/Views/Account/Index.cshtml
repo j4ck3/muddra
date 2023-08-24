@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Konto";
+    var userEmail = User.Identity?.Name;
+}
+
+@if (User != null && userEmail != null)
+{
+    <div class="profile-container">
+        <div class="container">
+            @if (signInManager.IsSignedIn(User))
+            {
+                <div class="profile-content">
+                    <p class="profile-email mt-3">@userEmail</p>
+                    <a class="profile-button mb-3" asp-controller="account" asp-action="index">Edit Account</a>
+                    <a class="profile-button" asp-controller="account" asp-action="signout">Logga ut</a>
+                </div>
+            }
+            else
+            {
+                <p class="profile-email mt-3">Du är inte inloggad</p>
+                <a class="profile-button mb-3" asp-controller="account" asp-action="login">Logga In</a>
+            }
+        </div>
+    </div>
+
+}

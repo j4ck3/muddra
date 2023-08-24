@@ -1,0 +1,25 @@
+﻿@model CreateServiceViewModel
+<div class="container">
+    <div class="title mb-4">Ny Tjänst</div>
+    <form method="POST" class="validate-form" enctype="multipart/form-data" asp-action="CreateService" novalidate>
+        <div asp-validation-summary="ModelOnly" class="error"></div>
+        <div class="form-group mb-4">
+            <label asp-for="Title"></label>
+            <input required minlength="2" asp-for="Title" type="text">
+            <span asp-validation-for="Title"></span>
+            <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
+        </div>
+        <div class="form-group mb-4">
+            <label asp-for="Description"></label>
+            <textarea minlength="10" asp-for="Description" type="text"></textarea>
+            <span asp-validation-for="Description"></span>
+            <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
+        </div>
+        <div class="form-group mb-4">
+            <label asp-for="ImageUrl"></label>
+            <input asp-for="ImageUrl">
+            <span asp-validation-for="ImageUrl"></span>
+        </div>
+        <button type="submit" class="btn-theme">Spara</button>
+    </form>
+</div>

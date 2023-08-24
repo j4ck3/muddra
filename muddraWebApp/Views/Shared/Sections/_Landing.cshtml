@@ -1,0 +1,26 @@
+﻿@model LandingViewModel
+@if (Model != null)
+{
+    <div class="container-home mb-4">
+        <div class="container-xxl">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-container">
+                    @if (Model.Title != null)
+                    {
+                        <h1 class="hero-text">@Model.Title</h1>
+                    }
+                    @if (Model.Messgae != null)
+                    {
+                        <h2>@Model.Messgae</h2>
+                    }
+                </div>
+                <div class="img-container">
+                    @if (Model.ImgUrl != null)
+                    {
+                        <img src="@Model.ImgUrl" alt="@Model.Title" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

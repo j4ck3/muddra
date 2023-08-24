@@ -1,0 +1,47 @@
+﻿@model SignUpViewModel
+@{
+    string passwordRegex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':""\\|,.<>\/?]).+$";
+}
+<section class="contact-form">
+    <div class="container">
+        <h2 class="title mb-3">Register Your Account</h2>
+        <form id="register-form" class="validate-form" method="POST" novalidate>
+            <div asp-validation-summary="ModelOnly" class="error"></div>
+            <div class="mobile form-group mb-3">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" id="mobile" type="text">
+                <span asp-validation-for="PhoneNumber" class="error"></span>
+                <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
+            </div>
+            <div class="email form-group mb-3">
+                <label asp-for="Email"></label>
+                <span>*</span>
+                <input pattern="[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" asp-for="Email" id="email" type="email">
+                <span asp-validation-for="Email" class="error"></span>
+                <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
+            </div>
+            <div class="password form-group mb-3">
+                <label asp-for="Password"></label>
+                <span>*</span>
+                <input required minlength="8" pattern="@passwordRegex" asp-for="Password" id="password" type="password">
+                <span asp-validation-for="Password" class="error"></span>
+                <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
+            </div>
+            <div class="confirmPassword form-group mb-3">
+                <label asp-for="ConfirmPassword"></label>
+                <span>*</span>
+                <input required match="password" asp-for="ConfirmPassword" id="confirmPassword" type="password">
+                <span asp-validation-for="ConfirmPassword" class="error"></span>
+                <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
+            </div>
+            <div class="terms form-checkbox-group">
+                <label class="custom-checkbox">
+                    I have read and accepts the terms and agreements
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <button class="btn-theme">Registrera dig</button>
+        </form>
+    </div>
+</section>

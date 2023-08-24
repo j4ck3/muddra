@@ -1,0 +1,11 @@
+﻿@model ServicesViewModel
+<div>
+    <p>@Model.Title</p>
+    @if(Model.ServiceItems != null)
+    {
+        @foreach (var item in Model.ServiceItems)
+        {
+            <partial name="../Shared/Sections/_ServiceTile" model="item" />
+        }
+    }
+</div>
