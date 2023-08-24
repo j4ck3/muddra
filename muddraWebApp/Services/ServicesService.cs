@@ -8,7 +8,6 @@ namespace muddraWebApp.Services;
 
 public class ServicesService
 {
-
     #region private fields and CTOR
     private readonly DataContext _dataContext;
     private readonly ServiceRepo _serviceRepo;
@@ -44,7 +43,6 @@ public class ServicesService
         try
         {
             ServiceEntity serviceEntity = model;
-
             var result = await _serviceRepo.AddAsync(serviceEntity);
             return result;
         }

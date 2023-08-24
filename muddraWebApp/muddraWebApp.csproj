@@ -11,6 +11,13 @@
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
   </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckBuilt Include="wwwroot/css/site.scss" Set="Css" />
+    <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
+  </ItemGroup>
+  <Target Name="Tailwind" BeforeTargets="Build">
+    <Exec Command="npm run css:build" />
+  </Target>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
