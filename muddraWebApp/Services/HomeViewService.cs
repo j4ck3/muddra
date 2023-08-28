@@ -19,7 +19,7 @@ public class HomeViewService
             Landing = new LandingViewModel
             {
                 Title = "Välkommen till Hjälmarens Sjötjänst AB",
-                //Messgae = "ss",
+                Messgae = "Vi erbjuder diverse hantverkstjänster som brobyggen till ekolodsmätning och sten-sprängning.",
                 //ImgUrl = "ddd",
 
             },

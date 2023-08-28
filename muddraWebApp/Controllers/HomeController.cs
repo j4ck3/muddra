@@ -24,6 +24,13 @@ public class HomeController : Controller
         return View(await _homeViewService.PopulateAsync());
     }
 
+    [HttpGet]
+    public IActionResult Tos()
+    {
+        ViewData["Title"] = "Användarvilkor & Integritetspolicy";
+        return View();
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateService(CreateServiceViewModel viewModel)
     {

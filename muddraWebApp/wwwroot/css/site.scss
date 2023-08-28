@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@import 'core/_variables.scss';
+@import 'core/_mixins.scss';
+@import 'core/_base.scss';
+
+@import 'sections/_header.scss';
+@import 'sections/_footer.scss';

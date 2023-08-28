@@ -1,0 +1,114 @@
+header {
+    height: 110px;
+    width: 100%;
+    position: fixed;
+    background-color: white;
+    z-index: 2;
+
+    @include lg {
+        padding: 30px 0;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    .logo {
+        grid-area: logo;
+    }
+
+    menu {
+        grid-area: menu;
+        font-family: $color-bg;
+        background-color: white;
+        margin-top: 240px;
+
+
+        @include lg {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: transparent;
+            margin-top: 0;
+        }
+
+
+        .menu-links {
+            color: $color-main;
+            padding-top: 30px;
+
+            @include lg {
+                padding-top: 0;
+                display: block !important;
+            }
+
+            .link {
+                color: $color-main;
+                display: block;
+                margin: 10px 20px;
+                padding: 10px;
+
+                @include lg {
+                    display: inline-block;
+                    margin: 0 20px;
+                    padding: 0;
+                }
+
+                &:hover {
+                    color: $color-sec;
+                }
+            }
+        }
+
+        .menu-icons {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: -55px;
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 1px -1px 26px 21px rgb(0 0 0 / 58%);
+            -webkit-box-shadow: 0px -1px 27px 11px rgb(0 0 0 / 27%);
+            -moz-box-shadow: 1px -1px 26px 21px rgba(0,0,0,0.58);
+
+            @include lg {
+                background-color: transparent;
+                position: static;
+                padding: 0;
+                box-shadow: 1px -1px 26px 21px rgba(0,0,0,0);
+                -webkit-box-shadow: 1px -1px 26px 21px rgba(0,0,0,0);
+                -moz-box-shadow: 1px -1px 26px 21px rgba(0,0,0,0);
+            }
+
+            .link {
+                color: $color-main;
+                margin-left: 2rem;
+
+                &:hover {
+                    color: $color-main;
+                }
+            }
+        }
+    }
+
+    .toggle {
+        grid-area: btn;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        cursor: pointer;
+
+        @include lg {
+            display: none;
+        }
+
+        .btn-white {
+            padding: 5px 15px;
+            font-size: 1.4rem;
+        }
+    }
+}
