@@ -1,8 +1,6 @@
 header {
     height: 110px;
     width: 100%;
-    position: fixed;
-    background-color: white;
     z-index: 2;
 
     @include lg {
@@ -14,16 +12,17 @@ header {
         align-items: center;
         justify-content: space-between;
         height: 100%;
-    }
 
-    .logo {
-        grid-area: logo;
+        .logo {
+            grid-area: logo;
+            width: 350px;
+        }
     }
 
     menu {
         grid-area: menu;
         font-family: $color-bg;
-        background-color: white;
+        background-color: transparent;
         margin-top: 240px;
 
 
@@ -31,7 +30,6 @@ header {
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            background-color: transparent;
             margin-top: 0;
         }
 
@@ -39,6 +37,7 @@ header {
         .menu-links {
             color: $color-main;
             padding-top: 30px;
+            background-color: transparent;
 
             @include lg {
                 padding-top: 0;
@@ -70,7 +69,7 @@ header {
             left: -55px;
             text-align: center;
             padding: 20px;
-            background-color: white;
+            background-color: transparent;
             box-shadow: 1px -1px 26px 21px rgb(0 0 0 / 58%);
             -webkit-box-shadow: 0px -1px 27px 11px rgb(0 0 0 / 27%);
             -moz-box-shadow: 1px -1px 26px 21px rgba(0,0,0,0.58);
