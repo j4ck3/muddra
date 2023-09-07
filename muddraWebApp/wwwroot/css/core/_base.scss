@@ -4,4 +4,9 @@ html, body {
     background-color: $color-bg;
     font-size: $font-size-base;
     color: $color-main;
+    font-family: $font-montserrat;
+}
+
+a {
+    text-decoration: none;
 }

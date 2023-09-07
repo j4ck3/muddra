@@ -1,29 +1,26 @@
 ﻿@model ServiceItemViewModel
-
-<div>
-    <div>
-        @if (Model.ImageUrl != null)
-        {
-            if (Model.ImageUrl.Contains("/"))
+<div class="col-12 col-md-6 col-lg-4">
+    <div class="service-card">
+        <div class="service-image-container">
+            @if (Model.ImageUrl != null)
             {
-                <img class="model-item-img" src="@Model.ImageUrl" alt="@Model.Title" />
+                if (Model.ImageUrl.Contains("/"))
+                {
+                    <img class="service-img-thumbnail" src="@Model.ImageUrl" alt="@Model.Title" />
+                }
+                else
+                {
+                    <img class="service-img-thumbnail" src="@Url.Content("~/Assets/Imgs/Services/" + Model.ImageUrl)" alt="@Model.ImageUrl" />
+                }
             }
-            else
-            {
-                <img class="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl" src="@Url.Content("~/Assets/Imgs/Services/" + Model.ImageUrl)" alt="@Model.ImageUrl" />
-            }
-        }
-    </div>
-    <div class="d-flex justify-content-between align-items-end">
-        <div>
-            @if (Model.Title != null)
-            {
-                <h2>@Model.Title</h2>
-            }
-            @if (Model.Description != null)
-            {
-                <span>@Model.Description</span>
-            }
+        </div>
+        <div class="service-card-content">
+            <div>
+                @if (Model.Description != null)
+                {
+                    <span>@Model.Description</span>
+                }
+            </div>
         </div>
     </div>
 </div>

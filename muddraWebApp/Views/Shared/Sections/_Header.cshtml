@@ -11,7 +11,6 @@
                 }
             </nav>
             <nav class="menu-icons">
-                <a class="link" asp-controller="product" asp-action="search"><i class="fa-solid fa-search"></i></a>
                 @if (signInManager.IsSignedIn(User))
                 {
                     <a class="link" asp-controller="account" asp-action="Index">@User.FindFirst("DisplayName")?.Value</a>

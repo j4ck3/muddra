@@ -2,21 +2,25 @@
 @if (Model != null)
 {
     <div class="container">
-        <div class="text-container">
+        <div class="d-flex justify-content-center flex-column align-items-center mt-5">
             @if (Model.Title != null)
             {
-                <h1 class="text-bold">@Model.Title</h1>
+                <h1 class="text-white text-center fw-bold fs-2">@Model.Title</h1>
             }
-            @if (Model.Messgae != null)
-            {
-                <h2>@Model.Messgae</h2>
-            }
-        </div>
-        <div class="img-container">
-            @if (Model.ImgUrl != null)
-            {
-                <img src="@Model.ImgUrl" alt="@Model.Title" />
-            }
+            <div class="landing-container">
+                @if (Model.Messgae != null)
+                {
+                    <div class="mx-5">
+                        <h2 class="text-center fw-medium fs-6 mt-4">@Model.Messgae</h2>
+                    </div>
+                }
+            </div>
+            <div class="img-container">
+                @if (Model.ImgUrl != null)
+                {
+                    <img src="@Model.ImgUrl" alt="@Model.Title" />
+                }
+            </div>
         </div>
     </div>
 }

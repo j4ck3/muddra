@@ -1,11 +1,13 @@
 ﻿@model ServicesViewModel
 <div class="container">
-    <p>@Model.Title</p>
+    @* <p>@Model.Title</p> *@
     @if(Model.ServiceItems != null)
     {
-        @foreach (var item in Model.ServiceItems)
-        {
-            <partial name="../Shared/Sections/_ServiceTile" model="item" />
-        }
+        <div class="row gx-2 gy-5 mt-5">
+            @foreach (var item in Model.ServiceItems)
+            {
+                <partial name="../Shared/Sections/_ServiceTile" model="item" />
+            }
+        </div>
     }
 </div>
