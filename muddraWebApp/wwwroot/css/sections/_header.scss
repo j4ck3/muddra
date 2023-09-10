@@ -33,22 +33,39 @@ header {
 
 
         .menu-links {
-            color: $color-main;
-            padding-top: 30px;
+            position: absolute;
+            right: 0;
+            top: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000;
+            width: 50%;
+            height: 100dvh;
+            z-index: 2;
+            border-radius: 25px 0 0 25px;
 
 
 
             @include lg {
-                padding-top: 0;
-                display: block !important;
+                position: static !important;
+                background-color: transparent;
+                border-radius: 25px 0 0 25px;
+                width: auto;
+                height: auto;
             }
 
             .link {
                 color: $color-main;
                 display: block;
                 margin: 10px 20px;
+                font-weight: 500;
                 padding: 10px;
+                transition: .2s;
 
+                :hover {
+                    color: #1481baff;
+                }
 
                 @include lg {
                     display: inline-block;
@@ -96,15 +113,14 @@ header {
     }
 
     .toggle {
-        grid-area: btn;
         display: flex;
         justify-content: end;
         align-items: center;
         cursor: pointer;
         background-color: transparent;
-        border: none;
-        font-size: 26px;
-        color: $color-sec;
+        border: 0;
+        font-size: 20px;
+        color: #fff;
 
         @include lg {
             display: none;

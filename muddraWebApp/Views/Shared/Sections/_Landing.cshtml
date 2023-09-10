@@ -1,19 +1,22 @@
 ﻿@model LandingViewModel
 @if (Model != null)
 {
-    <div class="container">
-        <div class="d-flex justify-content-center flex-column align-items-center mt-5">
-            @if (Model.Title != null)
-            {
-                <h1 class="text-white text-center fw-bold fs-2">@Model.Title</h1>
-            }
+    <section class="container">
+        <div class="d-flex flex-row mt-5">
             <div class="landing-container">
+                @if (Model.Title != null)
+                {
+                    <h1 class="text-white text-center fw-light fs-1">@Model.Title</h1>
+                }
+
                 @if (Model.Messgae != null)
                 {
-                    <div class="mx-5">
-                        <h2 class="text-center fw-medium fs-6 mt-4">@Model.Messgae</h2>
-                    </div>
+                    <h2 class="fw-medium text-center fs-6 mt-3">@Model.Messgae</h2>
                 }
+                <div class="d-flex justify-content-center flex-column align-items-center flex-lg-row ">
+                    <a class="btn-theme m-2" href="#services">Se alla Tjänster</a>
+                    <a class="btn-theme m-2" asp-controller="home" asp-action="contact">Kontakta oss<i class="fa-regular fa-paper-plane ms-2"></i></a>
+                </div>
             </div>
             <div class="img-container">
                 @if (Model.ImgUrl != null)
@@ -22,5 +25,5 @@
                 }
             </div>
         </div>
-    </div>
+    </section>
 }

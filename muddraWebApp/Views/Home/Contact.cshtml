@@ -1,0 +1,36 @@
+﻿@model ContactViewModel
+<div class="container">
+    <div class="d-flex justify-content-center mt-5">
+        <form class="validate-form" asp-action="Contact" method="POST" novalidate>
+            <h2 class="title mt-5 mb-2 fs-2 text-center fw-light">Skicka oss ett medelande</h2>
+            @*<h3 class="title fs-6 text-center fw-regular">Så svarar vi så fort vi kan</h3>*@
+
+            @if (!Html.ViewData.ModelState.IsValid)
+            {
+                <div asp-validation-summary="ModelOnly" class="error my-3 visually-hidden"></div>
+            }
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <span asp-validation-for="Email"></span>
+                <input required pattern="[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" asp-for="Email" type="email">
+                <partial name="../Shared/Components/_FormValidationIndicators" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Message"></label>
+                <span asp-validation-for="Message"></span>
+                <textarea rows="3" required minlength="20" asp-for="Message" type="text"></textarea>
+                <partial name="../Shared/Components/_FormValidationIndicators" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Area"></label>
+                <span class="text-end inline" asp-validation-for="Area"></span>
+                <input required asp-for="Area" type="text">
+                <partial name="../Shared/Components/_FormValidationIndicators" />
+            </div>
+            <button type="submit" class="btn-theme w-100">Skicka<i class="ms-2 fa-solid fa-paper-plane"></i></button>
+        </form>
+    </div>
+</div>

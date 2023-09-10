@@ -20,29 +20,29 @@ namespace muddraWebApp.Controllers
             return View();
         }
 
-        public IActionResult SignUp()
-        {
-            ViewData["Title"] = "Registrering";
-            return View();
-        }
+        //public IActionResult SignUp()
+        //{
+        //    ViewData["Title"] = "Registrering";
+        //    return View();
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> SignUp(SignUpViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (!await _authService.FindAsync(model))
-                {
-                    if (await _authService.SignUpAsync(model))
-                        return RedirectToAction("index");
-                    else
-                        ModelState.AddModelError("", "Något gick fel vid registreringen.");
-                }
-                else
-                    ModelState.AddModelError("", "En användare med samma e-post adress finnns redan");
-            }
-            return View(model);
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> SignUp(SignUpViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (!await _authService.FindAsync(model))
+        //        {
+        //            if (await _authService.SignUpAsync(model))
+        //                return RedirectToAction("index");
+        //            else
+        //                ModelState.AddModelError("", "Något gick fel vid registreringen.");
+        //        }
+        //        else
+        //            ModelState.AddModelError("", "En användare med samma e-post adress finnns redan");
+        //    }
+        //    return View(model);
+        //}
 
         [HttpGet]
         public IActionResult SignIn()

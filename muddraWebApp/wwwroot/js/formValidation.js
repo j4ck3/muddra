@@ -7,7 +7,7 @@ const validateForm = formSelector => {
             isValid: input =>
                 input.value && input.value.length >= parseInt(input.minLength, 10),
             errorMessage: (input, label) =>
-                `${label.textContent} needs to be at least ${input.minLength} characters`,
+                `${label.textContent} måste vara minst ${input.minLength} bokstäver långt.`,
         },
         {
             attribute: 'custommaxlength',
@@ -29,7 +29,7 @@ const validateForm = formSelector => {
                 if (label.textContent == "Password") {
                     return `${passwordRegExErrorMsg}`
                 } else {
-                    return `Inte ett giltigt ${label.textContent}`
+                    return `Inte en giltigt ${label.textContent}`
                 }
             }
         },
@@ -47,7 +47,7 @@ const validateForm = formSelector => {
         {
             attribute: 'required',
             isValid: input => input.value.trim() !== '',
-            errorMessage: (input, label) => `${label.textContent} is required`,
+            errorMessage: (input, label) => `${label.textContent} är ett obligatoriskt fält`,
         },
     ];
 

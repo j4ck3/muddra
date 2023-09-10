@@ -1,0 +1,71 @@
+﻿
+.validate-form {
+    width: 600px;
+    height: 70dvh;
+
+    .error {
+
+        ul {
+            margin: 0 !important;
+            padding: 0 !important;
+
+            li {
+                margin-left: 0px;
+                text-align: center;
+                font-size: 14px;
+                font-weight: 600;
+                padding: 5px 0;
+                width: 100%;
+                border: 1px solid red;
+                color: red;
+                background-color: #350000;
+                list-style: none;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 1rem;
+
+        .field-validation-error {
+            margin-left: 1rem;
+            font-size: 14px;
+            font-weight: 500;
+            color: red;
+        }
+        .validate-icon {
+            position: absolute;
+            right: 17px;
+            top: 34px;
+        }
+
+        .errormsg {
+            padding-left: 10px;
+        }
+    }
+
+    input, textarea {
+        width: 100%;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.50);
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        outline: none;
+        color: white;
+        font-size: 14px;
+    }
+
+    error {
+        font-size: 16px;
+        font-weight: 500;
+        margin-left: .6rem;
+        color: red;
+    }
+
+    label {
+        margin-left: 1rem;
+    }
+}

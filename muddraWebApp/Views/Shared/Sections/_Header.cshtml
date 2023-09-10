@@ -7,19 +7,12 @@
                 <a class="link" asp-controller="home" asp-action="contact">Kontakt</a>
                 @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                 {
-                    <a class="link" asp-controller="admin" asp-action="users">Dashboard</a>
+                        <a class="link" asp-controller="admin" asp-action="users">Dashboard</a>
                 }
-            </nav>
-            <nav class="menu-icons">
                 @if (signInManager.IsSignedIn(User))
                 {
-                    <a class="link" asp-controller="account" asp-action="Index">@User.FindFirst("DisplayName")?.Value</a>
-                    <a class="link" asp-controller="account" asp-action="signout">Logout</a>
-                }
-                else
-                {
-                    <a class="link" asp-controller="account" asp-action="signin">Logga In</a>
-                    <a class="link" asp-controller="account" asp-action="signup">Registrea Dig</a>
+                    <a class="link" asp-controller="account" asp-action="Index">@User.Identity?.Name</a>
+                    <a class="link" asp-controller="account" asp-action="signout">Logga ut</a>
                 }
             </nav>
         </menu>

@@ -12,10 +12,29 @@ html, body {
   font-size: 1rem;
   color: #1481ba;
   font-family: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
   text-decoration: none;
+}
+
+.btn-theme {
+  background-color: white;
+  padding: 7px 2rem;
+  border-radius: 50px;
+  display: block;
+  width: 200px;
+  text-align: center;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+@lg {
+  .btn-theme {
+    width: auto;
+  }
 }
 
 header {
@@ -49,20 +68,37 @@ header .container .header-btn {
   }
 }
 header menu .menu-links {
-  color: #1481ba;
-  padding-top: 30px;
+  position: absolute;
+  right: 0;
+  top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  width: 50%;
+  height: 100dvh;
+  z-index: 2;
+  border-radius: 25px 0 0 25px;
 }
 @media (min-width: 992px) {
   header menu .menu-links {
-    padding-top: 0;
-    display: block !important;
+    position: static !important;
+    background-color: transparent;
+    border-radius: 25px 0 0 25px;
+    width: auto;
+    height: auto;
   }
 }
 header menu .menu-links .link {
   color: #1481ba;
   display: block;
   margin: 10px 20px;
+  font-weight: 500;
   padding: 10px;
+  transition: 0.2s;
+}
+header menu .menu-links .link :hover {
+  color: #1481ba;
 }
 @media (min-width: 992px) {
   header menu .menu-links .link {
@@ -105,15 +141,14 @@ header menu .menu-icons .link:hover {
   color: #1481ba;
 }
 header .toggle {
-  grid-area: btn;
   display: flex;
   justify-content: end;
   align-items: center;
   cursor: pointer;
   background-color: transparent;
-  border: none;
-  font-size: 26px;
-  color: #11b5e4;
+  border: 0;
+  font-size: 20px;
+  color: #fff;
 }
 @media (min-width: 992px) {
   header .toggle {
@@ -129,7 +164,7 @@ header .toggle {
   overflow: hidden;
   padding: 20px 0px;
   width: 100%;
-  margin-bottom: 5rem;
+  margin: 5rem 0 1rem 0;
   /*    @include lg {
       position: fixed;
       }*/
@@ -176,7 +211,9 @@ header .toggle {
 }
 
 .landing-container {
-  max-width: 700px;
+  margin-top: 120px;
+  max-width: 600px;
+  height: 100dvh;
 }
 .landing-container h2 {
   color: #1481ba;
@@ -184,28 +221,87 @@ header .toggle {
 
 .service-card {
   overflow: hidden;
-  max-width: 300px;
+  max-width: auto;
   border-radius: 10px;
-  border: 1px solid #034748;
 }
 .service-card .service-image-container {
   overflow: hidden;
 }
 .service-card .service-image-container .service-img-thumbnail {
   width: 100%;
-  height: 180px;
+  height: auto;
   display: block;
+  object-fit: contain;
   overflow: hidden;
-  object-fit: cover;
 }
 .service-card .service-card-content {
   padding: 15px;
   border-radius: 0 0 10px 10px;
-  background-color: #1481ba;
+  background: linear-gradient(160deg, rgba(0, 0, 0, 0.24) 0%, rgba(11, 11, 11, 0.71) 100%);
 }
 .service-card .service-card-content span {
   display: block;
   color: white;
   font-size: 16px;
   font-weight: 500;
+}
+
+.validate-form {
+  width: 600px;
+  height: 70dvh;
+}
+.validate-form .error ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.validate-form .error ul li {
+  margin-left: 0px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 0;
+  width: 100%;
+  border: 1px solid red;
+  color: red;
+  background-color: #350000;
+  list-style: none;
+  border-radius: 5px;
+}
+.validate-form .form-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.validate-form .form-group .field-validation-error {
+  margin-left: 1rem;
+  font-size: 14px;
+  font-weight: 500;
+  color: red;
+}
+.validate-form .form-group .validate-icon {
+  position: absolute;
+  right: 17px;
+  top: 34px;
+}
+.validate-form .form-group .errormsg {
+  padding-left: 10px;
+}
+.validate-form input, .validate-form textarea {
+  width: 100%;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  outline: none;
+  color: white;
+  font-size: 14px;
+}
+.validate-form error {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 0.6rem;
+  color: red;
+}
+.validate-form label {
+  margin-left: 1rem;
 }

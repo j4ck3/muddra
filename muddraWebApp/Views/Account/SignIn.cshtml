@@ -1,7 +1,6 @@
 ﻿@model SignInViewModel
-<section class="contact-form">
-    <div class="container">
-        <div class="title mb-3">Please Login to Your Account</div>
+<div class="container d-flex justify-content-center align-items-center">
+    <section class="contact-form">
         <form id="register-form" class="validate-form" method="POST" novalidate>
             <div asp-validation-summary="ModelOnly" class="error"></div>
             <div class="email form-group mb-3">
@@ -16,14 +15,7 @@
                 <span asp-validation-for="Password" class="error"></span>
                 <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
             </div>
-            <div class="terms form-checkbox-group">
-                <label class="custom-checkbox">
-                    Please keep me Signed In
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <button class="btn-theme">Logga In</button>
+            <button class="btn-theme w-100">Logga In</button>
         </form>
-    </div>
-</section>
+    </section>
+</div>

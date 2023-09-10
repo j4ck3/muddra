@@ -1,11 +1,12 @@
-﻿using System.Net;
+﻿using muddraWebApp.Models.ViewModels;
+using System.Net;
 using System.Net.Mail;
 
 namespace muddraWebApp.Services;
 
 public class EmailService
 {
-    public async Task SendEmailAsync(string email, string message)
+    public async Task SendEmailAsync(ContactViewModel viewModel)
     {
        var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
@@ -27,9 +28,11 @@ public class EmailService
             client.EnableSsl = true;
             client.Credentials = new NetworkCredential(userName, key);
 
-            var subject = "Nytt meddelande från " + email;
+            var subject = "Nytt meddelande från " + viewModel.Email;
 
-            var mailMessage = new MailMessage(from: sender, to: reciver, subject, message);
+            var body = viewModel.Message + viewModel.Area;
+
+            var mailMessage = new MailMessage(from: sender, to: reciver, subject, body);
 
             await client.SendMailAsync(mailMessage);
         }

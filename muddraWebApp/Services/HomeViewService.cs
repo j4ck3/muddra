@@ -18,14 +18,14 @@ public class HomeViewService
         {
             Landing = new LandingViewModel
             {
-                Title = "Välkommen till Hjälmarens Sjötjänst AB",
-                Messgae = "Vi erbjuder diverse hantverkstjänster som brobyggen till ekolodsmätning och sten-sprängning.",
+                Title = "Välkommen!",
+                Messgae = "Vi erbjuder diverse hantverkstjänster som pålning, ekolodsmätning och sten-sprängning på Hjälmaren",
                 //ImgUrl = "ddd",
 
             },
             ServicesGrid = new ServicesViewModel
             {
-                Title = "Våra Tjänster",
+                Title = "Våra Tjänster vi erbjuder",
                 ServiceItems = await _servicesService.GetAllAsync()
 
             }
