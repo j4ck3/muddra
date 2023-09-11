@@ -246,6 +246,12 @@ header .toggle {
   font-weight: 500;
 }
 
+.contact-msg {
+  background-color: rgba(0, 0, 0, 0.32);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
 .validate-form {
   width: 600px;
   height: 70dvh;

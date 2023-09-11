@@ -30,7 +30,7 @@ public class EmailService
 
             var subject = "Nytt meddelande från " + viewModel.Email;
 
-            var body = viewModel.Message + viewModel.Area;
+            var body = viewModel.Name + Environment.NewLine + viewModel.Message + Environment.NewLine + viewModel.Area;
 
             var mailMessage = new MailMessage(from: sender, to: reciver, subject, body);
 

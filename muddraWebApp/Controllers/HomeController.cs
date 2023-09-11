@@ -48,9 +48,10 @@ public class HomeController : Controller
         {
             try
             {
-                var message = viewModel.Message + viewModel.Area;
                 var email = _emailService.SendEmailAsync(viewModel);
-                return LocalRedirect("/");
+                TempData["SuccessMessage"] = "Tack för ditt medelande!";
+                ViewData["Title"] = "Tack!";
+                return View();
             }
             catch
             {
@@ -62,6 +63,7 @@ public class HomeController : Controller
         }
         else
             ModelState.AddModelError("", "Validera formuläret");
+            ViewData["Title"] = "Kontakt";
             return View(viewModel);
 
     }
