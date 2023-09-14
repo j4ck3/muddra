@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Assets\Imgs\App\" />
     <Folder Include="wwwroot\Assets\Imgs\Services\" />
   </ItemGroup>
 

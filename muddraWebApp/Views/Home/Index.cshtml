@@ -7,7 +7,7 @@
 
 @if (TempData.ContainsKey("ErrorMessage"))
 {
-    <p class="text-red-500 text-sm font-bold">@TempData["ErrorMessage"]</p>
+    <p class="text-danger">@TempData["ErrorMessage"]</p>
 }
 @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
 {

@@ -37,12 +37,12 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Contact()
     {
-        ViewData["Title"] = "Kontakta Oss";
+        ViewData["Title"] = "Kontakt";
         return View();
     }
 
     [HttpPost]
-    public async Task<IActionResult> Contact(ContactViewModel viewModel)
+    public IActionResult Contact(ContactViewModel viewModel)
     {
         if (ModelState.IsValid)
         {
@@ -65,7 +65,6 @@ public class HomeController : Controller
             ModelState.AddModelError("", "Validera formuläret");
             ViewData["Title"] = "Kontakt";
             return View(viewModel);
-
     }
 
 
@@ -79,7 +78,8 @@ public class HomeController : Controller
             if (serviceEntity != null && viewModel.ImageUrl != null)
             {
                 if (!await _servicesService.UploadImageAsync(serviceEntity, viewModel.ImageUrl))
-                    TempData["ErrorMessage"] = "Kunde inte ladda upp bilden. Status: 500"; 
+                    TempData["ErrorMessage"] = "Kunde inte ladda upp bilden. Status: 500";
+                    return View(viewModel);
             }
         }
         else
