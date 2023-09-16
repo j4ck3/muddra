@@ -1,0 +1,65 @@
+﻿<h3 class="beforeafter-title">Före och Efter bilder</h3>
+<div class="beforeafter-hero">
+    <div class="image-box">
+        <div class="button-box">
+            <div id="btn"></div>
+            <button type="button" class="toggle-btn" onclick="after()">Före</button>
+            <button type="button" class="toggle-btn" onclick="before()">Efter</button>
+        </div>
+        <div class="imgs-container" id="before">
+            <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/muddra-before.png">
+        </div>
+        <div class="imgs-container" id="after">
+            <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/muddra-after.png">
+        </div>
+    </div>
+
+    <div class="image-box">
+        <div class="button-box">
+            <div id="btn1"></div>
+            <button type="button" class="toggle-btn" onclick="after1()">Före</button>
+            <button type="button" class="toggle-btn" onclick="before1()">Efter</button>
+        </div>
+        <div class="imgs-container1" id="before1">
+            <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/brygga-before.png">
+        </div>
+        <div class="imgs-container1" id="after1">
+            <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/brygga-after.png">
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var x = document.getElementById("before")
+    var y = document.getElementById("after")
+    var z = document.getElementById("btn")
+
+    var a = document.getElementById("before1")
+    var b = document.getElementById("after1")
+    var c = document.getElementById("btn1")
+
+    const before = () => {
+        x.style.left = "-400px"
+        y.style.left = "0"
+        z.style.left = "110px"
+    }
+
+    const after = () => {
+        x.style.left = "0"
+        y.style.left = "450px"
+        z.style.left = "0"
+    }
+
+    const before1 = () => {
+        a.style.left = "-400px"
+        b.style.left = "0"
+        c.style.left = "110px"
+    }
+
+    const after1 = () => {
+        a.style.left = "0"
+        b.style.left = "450px"
+        c.style.left = "0"
+    }
+</script>

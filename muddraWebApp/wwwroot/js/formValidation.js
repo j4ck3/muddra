@@ -7,7 +7,7 @@ const validateForm = formSelector => {
             isValid: input =>
                 input.value && input.value.length >= parseInt(input.minLength, 10),
             errorMessage: (input, label) =>
-                `${label.textContent} måste vara minst ${input.minLength} bokstäver långt.`,
+                `${label.textContent } m\u00E5ste inneh\u00E5lla minst ${ input.minLength } tecken.`
         },
         {
             attribute: 'custommaxlength',
@@ -29,7 +29,7 @@ const validateForm = formSelector => {
                 if (label.textContent == "Password") {
                     return `${passwordRegExErrorMsg}`
                 } else {
-                    return `Inte en giltigt ${label.textContent}`
+                    return `Inte en giltig ${label.textContent}`
                 }
             }
         },
@@ -47,7 +47,7 @@ const validateForm = formSelector => {
         {
             attribute: 'required',
             isValid: input => input.value.trim() !== '',
-            errorMessage: (input, label) => `${label.textContent} är ett obligatoriskt fält`,
+            errorMessage: (input, label) => `${label.textContent} \u00E4r ett obligatoriskt f\u00E4lt`,
         },
     ];
 
@@ -57,13 +57,13 @@ const validateForm = formSelector => {
         const errorContainer = formGroup.querySelector('.errormsg');
         const errorIcon = formGroup.querySelector('.icon-error');
         const successIcon = formGroup.querySelector('.icon-success');
-        input.classList.add('border');
+        //input.classList.add('border');
         let formGroupError = false;
         for (const option of validationOptions) {
             if (input.hasAttribute(option.attribute) && !option.isValid(input)) {
                 errorContainer.textContent = option.errorMessage(input, label);
-                input.classList.add('border-danger');
-                input.classList.remove('border-success')
+                //input.classList.add('border-danger');
+                //input.classList.remove('border-success')
                 errorIcon.classList.remove('d-none')
                 successIcon.classList.add('d-none')
                 formGroupError = true;
@@ -72,8 +72,8 @@ const validateForm = formSelector => {
 
         if (!formGroupError) {
             errorContainer.textContent = '',
-                input.classList.add('border-success');
-            input.classList.remove('border-danger')
+            //input.classList.add('border-success');
+            //input.classList.remove('border-danger')
             errorIcon.classList.add('d-none')
             successIcon.classList.remove('d-none')
         }

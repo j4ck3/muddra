@@ -54,8 +54,12 @@ header .container {
   height: 100%;
 }
 header .container .logo {
-  grid-area: logo;
-  width: 305px;
+  width: 250px;
+}
+@media (min-width: 992px) {
+  header .container .logo {
+    width: 310px;
+  }
 }
 header .container .header-btn {
   background-color: transparent;
@@ -149,6 +153,7 @@ header .toggle {
   border: 0;
   font-size: 20px;
   color: #fff;
+  padding: 10px;
 }
 @media (min-width: 992px) {
   header .toggle {
@@ -286,10 +291,14 @@ header .toggle {
 .validate-form .form-group .validate-icon {
   position: absolute;
   right: 17px;
-  top: 34px;
+  top: 32px;
 }
 .validate-form .form-group .errormsg {
+  text-align: right;
   padding-left: 10px;
+  font-size: 12px;
+  color: #dc3545;
+  display: block;
 }
 .validate-form input, .validate-form textarea {
   width: 100%;
@@ -310,4 +319,83 @@ header .toggle {
 }
 .validate-form label {
   margin-left: 1rem;
+}
+
+.beforeafter-title {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 300;
+  color: white;
+}
+
+.beforeafter-hero {
+  display: flex;
+  justify-content: center;
+  border-radius: 30px;
+  margin-bottom: 5rem;
+  gap: 4rem;
+}
+.beforeafter-hero .image-box {
+  width: 430px;
+  height: 720px;
+  position: relative;
+  padding: 5px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.beforeafter-hero .button-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 220px;
+  margin: 25px auto;
+  position: relative;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #0d7377 0%, rgba(20, 255, 236, 0.5578606443) 100%);
+  z-index: 2;
+}
+.beforeafter-hero .button-box #btn, .beforeafter-hero .button-box #btn1 {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 109px;
+  height: 98%;
+  border-radius: 50px;
+  border: 1px solid white;
+  transition: 0.5s;
+}
+.beforeafter-hero .button-box .toggle-btn {
+  color: white;
+  font-weight: 500;
+  padding: 10px 30px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+}
+.beforeafter-hero .imgs-container, .beforeafter-hero .imgs-container1 {
+  position: absolute;
+  top: -30px;
+  transition: 0.5s;
+}
+.beforeafter-hero #before, .beforeafter-hero #before1 {
+  left: 0px;
+}
+.beforeafter-hero #after, .beforeafter-hero #after1 {
+  left: 450px;
+}
+
+@media (max-width: 1100px) {
+  .beforeafter-hero {
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 1;
+  }
+  .beforeafter-hero .image-box {
+    margin-bottom: 3rem;
+    width: 300px;
+  }
 }

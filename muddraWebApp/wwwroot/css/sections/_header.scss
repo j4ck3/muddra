@@ -14,8 +14,11 @@ header {
         height: 100%;
 
         .logo {
-            grid-area: logo;
-            width: 305px;
+            width: 250px;
+
+            @include lg {
+                width: 310px;
+            }
         }
 
         .header-btn {
@@ -121,6 +124,7 @@ header {
         border: 0;
         font-size: 20px;
         color: #fff;
+        padding: 10px;
 
         @include lg {
             display: none;
