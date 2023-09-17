@@ -31,11 +31,6 @@ a {
   font-weight: 600;
   font-size: 14px;
 }
-@lg {
-  .btn-theme {
-    width: auto;
-  }
-}
 
 header {
   height: 110px;
