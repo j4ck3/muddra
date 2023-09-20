@@ -1,7 +1,6 @@
 ﻿@model ContactViewModel
-
 @{
-    string emailRegEx = @"[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+    string emailRegExp = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
 }
 <div class="container">
     <div class="d-flex justify-content-center mt-5">
@@ -33,7 +32,7 @@
                 <div class="form-group">
                     <label class="fs-6" asp-for="Email"></label>
                     <span asp-validation-for="Email"></span>
-                    <input required pattern="@emailRegEx" asp-for="Email" type="email">
+                    <input required pattern="@emailRegExp" asp-for="Email" type="email">
                     <partial name="../Shared/Components/_FormValidationIndicators" />
                 </div>
 

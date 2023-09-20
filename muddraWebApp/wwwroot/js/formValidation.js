@@ -7,7 +7,7 @@ const validateForm = formSelector => {
             isValid: input =>
                 input.value && input.value.length >= parseInt(input.minLength, 10),
             errorMessage: (input, label) =>
-                `${label.textContent } m\u00E5ste inneh\u00E5lla minst ${ input.minLength } tecken.`
+                `${label.textContent} m\u00E5ste inneh\u00E5lla minst ${input.minLength } bokst\u00E4ver.`
         },
         {
             attribute: 'custommaxlength',
@@ -57,13 +57,10 @@ const validateForm = formSelector => {
         const errorContainer = formGroup.querySelector('.errormsg');
         const errorIcon = formGroup.querySelector('.icon-error');
         const successIcon = formGroup.querySelector('.icon-success');
-        //input.classList.add('border');
         let formGroupError = false;
         for (const option of validationOptions) {
             if (input.hasAttribute(option.attribute) && !option.isValid(input)) {
                 errorContainer.textContent = option.errorMessage(input, label);
-                //input.classList.add('border-danger');
-                //input.classList.remove('border-success')
                 errorIcon.classList.remove('d-none')
                 successIcon.classList.add('d-none')
                 formGroupError = true;
@@ -72,8 +69,6 @@ const validateForm = formSelector => {
 
         if (!formGroupError) {
             errorContainer.textContent = '',
-            //input.classList.add('border-success');
-            //input.classList.remove('border-danger')
             errorIcon.classList.add('d-none')
             successIcon.classList.remove('d-none')
         }
