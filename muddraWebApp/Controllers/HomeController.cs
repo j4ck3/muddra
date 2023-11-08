@@ -78,7 +78,7 @@ public class HomeController : Controller
             if (serviceEntity != null && viewModel.ImageUrl != null)
             {
                 if (!await _servicesService.UploadImageAsync(serviceEntity, viewModel.ImageUrl))
-                    TempData["ErrorMessage"] = "Kunde inte ladda upp bilden. Status: 500";
+                    TempData["ErrorMessage"] = "Kunde inte ladda upp bilden.";
                     return View(viewModel);
             }
         }

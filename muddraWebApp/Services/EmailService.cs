@@ -26,14 +26,14 @@ public class EmailService
 
             var recipients = new List<string>
             {
-                reciver1, reciver2
+                reciver1!, reciver2!
             };
 
             using var client = new SmtpClient(host, port);
             client.EnableSsl = true;
             client.Credentials = new NetworkCredential(userName, key);
 
-            var subject = "Nytt meddelande från " + viewModel.Email;
+            var subject = "Meddelande från " + viewModel.Name;
 
             var body = viewModel.Name + Environment.NewLine + viewModel.Message + Environment.NewLine + viewModel.Area;
 

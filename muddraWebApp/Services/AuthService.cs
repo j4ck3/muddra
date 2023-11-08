@@ -9,14 +9,12 @@ namespace muddraWebApp.Services;
 public class AuthService
 {
     private readonly UserManager<IdentityUser> _userManager;
-    private readonly IdentityContext _identityContext;
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly RolesService _rolesService;
 
-    public AuthService(UserManager<IdentityUser> userManager, IdentityContext identityContext, SignInManager<IdentityUser> signInManager, RolesService rolesService)
+    public AuthService(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RolesService rolesService)
     {
         _userManager = userManager;
-        _identityContext = identityContext;
         _signInManager = signInManager;
         _rolesService = rolesService;
     }
