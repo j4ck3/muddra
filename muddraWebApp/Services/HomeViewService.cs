@@ -19,9 +19,7 @@ public class HomeViewService
             Landing = new LandingViewModel
             {
                 Title = "Välkommen!",
-                Messgae = "Vi erbjuder diverse hantverkstjänster som pålning, ekolodsmätning och sten-sprängning på Hjälmaren",
-                //ImgUrl = "ddd",
-
+                Messgae = "Vi erbjuder diverse hantverkstjänster som pålning, ekolodsmätning och sten-sprängning på Hjälmaren.",
             },
             ServicesGrid = new ServicesViewModel
             {

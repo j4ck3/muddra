@@ -46,20 +46,27 @@ public class HomeController : Controller
     {
         if (ModelState.IsValid)
         {
-            try
+            // honeypot field
+            if (string.IsNullOrEmpty(viewModel.LastName))
             {
-                var email = _emailService.SendEmailAsync(viewModel);
-                TempData["SuccessMessage"] = "Tack för ditt medelande!";
-                ViewData["Title"] = "Tack!";
-                return View();
-            }
-            catch
+                try
+                {
+                    var email = _emailService.SendEmailAsync(viewModel);
+                    TempData["SuccessMessage"] = "Tack för ditt medelande!";
+                    ViewData["Title"] = "Tack!";
+                    return View();
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "Det gick inte att skicka medelandet just nu");
+                    return View(viewModel);
+                }
+            }else
             {
-                ModelState.AddModelError("", "Det gick inte att skicka medelandet just nu");
+                TempData["SuccessMessage"] = "Thank you for your message";
+                ViewData["Title"] = "Thank you!";
                 return View(viewModel);
             }
-
-
         }
         else
             ModelState.AddModelError("", "Validera formuläret");

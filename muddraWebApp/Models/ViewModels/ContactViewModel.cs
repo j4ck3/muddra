@@ -8,7 +8,6 @@ public class ContactViewModel
     [EmailAddress(ErrorMessage = "Ange en giltig E-post adress")]
     public string Email { get; set; } = null!;
 
-    [MinLength(20, ErrorMessage = "Medelandet måste vara minst 20 bokstäver långt")]
     [Display(Name = "Medelande")]
     [Required(ErrorMessage = "*")]
     public string Message { get; set; } = null!;
@@ -16,6 +15,8 @@ public class ContactViewModel
     [Display(Name = "Namn")]
     [Required(ErrorMessage = "*")]
     public string Name { get; set; } = null!;
+
+    public string? LastName { get; set; }
 
     [Display(Name = "Adress / Område")]
     [Required(ErrorMessage = "*")]

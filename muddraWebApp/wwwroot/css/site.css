@@ -269,6 +269,15 @@ header .toggle {
   list-style: none;
   border-radius: 5px;
 }
+.validate-form .last-name {
+  height: 1px;
+}
+.validate-form .last-name label {
+  color: transparent;
+}
+.validate-form .last-name input {
+  background-color: rgba(0, 0, 0, 0);
+}
 .validate-form .form-group {
   position: relative;
   margin-bottom: 1rem;
