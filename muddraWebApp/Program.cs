@@ -12,14 +12,9 @@ IConfiguration configuration = new ConfigurationBuilder()
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Defualt")));
-
-
-//MYSQL DATABASE CONNECTION
-//var ConnData = configuration.GetConnectionString("mySqlData");
-
-//builder.Services.AddDbContext<DataContext>(o =>
-//    o.UseMySql(ConnData, ServerVersion.AutoDetect(ConnData)));
+var ConnData = configuration.GetConnectionString("Defualt");
+builder.Services.AddDbContext<DataContext>(o =>
+    o.UseMySql(ConnData, ServerVersion.AutoDetect(ConnData)));
 
 //identity options
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
