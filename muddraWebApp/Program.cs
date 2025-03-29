@@ -4,17 +4,21 @@ using Microsoft.EntityFrameworkCore;
 using muddraWebApp.Contexts;
 using muddraWebApp.Repos;
 
-IConfiguration configuration = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json")
-    .Build();
+// IConfiguration configuration = new ConfigurationBuilder()
+//     .SetBasePath(Directory.GetCurrentDirectory())
+//     .AddJsonFile("appsettings.json")
+//     .Build();
+
+
+DotNetEnv.Env.Load();
+string Defualt = Environment.GetEnvironmentVariable("DEFUALT_CONNECTION")!;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
-var ConnData = configuration.GetConnectionString("Defualt");
+
 builder.Services.AddDbContext<DataContext>(o =>
-    o.UseMySql(ConnData, ServerVersion.AutoDetect(ConnData)));
+    o.UseMySql(Defualt, ServerVersion.AutoDetect(Defualt)));
 
 //identity options
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
@@ -38,7 +42,7 @@ builder.Services.AddScoped<ServiceRepo>();
 
 //settings
 var app = builder.Build();
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();

@@ -1,0 +1,14 @@
+services:
+  muddra:
+    image: muddra:latest
+    hostname: muddra
+    container_name: muddra
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+    restart: unless-stopped

@@ -1,9 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.7.34018.315
+VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "muddraWebApp", "muddraWebApp\muddraWebApp.csproj", "{7B930F9C-8D62-454B-A7E9-3C32C79EF80C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "muddraWebApp", "muddraWebApp\muddraWebApp.csproj", "{8ED4F35A-09BF-1FC5-E5A4-A0F5CC7DBD4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +10,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7B930F9C-8D62-454B-A7E9-3C32C79EF80C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B930F9C-8D62-454B-A7E9-3C32C79EF80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B930F9C-8D62-454B-A7E9-3C32C79EF80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B930F9C-8D62-454B-A7E9-3C32C79EF80C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ED4F35A-09BF-1FC5-E5A4-A0F5CC7DBD4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED4F35A-09BF-1FC5-E5A4-A0F5CC7DBD4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED4F35A-09BF-1FC5-E5A4-A0F5CC7DBD4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED4F35A-09BF-1FC5-E5A4-A0F5CC7DBD4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {15D37C6A-840A-46E3-961D-B9ABC64DC149}
+		SolutionGuid = {C4FE4D61-EEA7-4AFF-A471-735E46CE1FB8}
 	EndGlobalSection
 EndGlobal

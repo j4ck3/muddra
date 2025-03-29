@@ -8,21 +8,18 @@ public class EmailService
 {
     public async Task SendEmailAsync(ContactViewModel viewModel)
     {
-       var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json")
-            .Build();
+        DotNetEnv.Env.Load();
 
         try
         {
-            var smtpSettingsSection = configuration.GetSection("SmtpSettings");
-            var host = smtpSettingsSection.GetValue<string>("Host");
-            var port = smtpSettingsSection.GetValue<int>("Port");
-            var userName = smtpSettingsSection.GetValue<string>("RelayUsername");
-            var key = smtpSettingsSection.GetValue<string>("RelayKey");
-            var reciver1 = smtpSettingsSection.GetValue<string>("Reciver1");
-            var reciver2 = smtpSettingsSection.GetValue<string>("Reciver2");
-            var sender = "noreply@muddra.com";
+
+            string host = Environment.GetEnvironmentVariable("HOST")!;
+            int port = DotNetEnv.Env.GetInt("PORT");
+            string userName = Environment.GetEnvironmentVariable("SMTP_USERNAME")!;
+            string key = Environment.GetEnvironmentVariable("SMTP_KEY")!;
+            string reciver1 = Environment.GetEnvironmentVariable("RECIVER_1")!;
+            string reciver2 = Environment.GetEnvironmentVariable("RECIVER_2")!;
+            string sender = "noreply@muddra.com";
 
             var recipients = new List<string>
             {

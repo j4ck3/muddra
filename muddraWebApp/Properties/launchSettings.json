@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "http": {
+    "httpDevelopment": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
