@@ -1,8 +1,10 @@
 using muddraWebApp.Services;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using muddraWebApp.Contexts;
 using muddraWebApp.Repos;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
 
 // IConfiguration configuration = new ConfigurationBuilder()
 //     .SetBasePath(Directory.GetCurrentDirectory())
@@ -10,9 +12,10 @@ using muddraWebApp.Repos;
 //     .Build();
 
 
+
 DotNetEnv.Env.Load();
 string Defualt = Environment.GetEnvironmentVariable("DEFUALT_CONNECTION")!;
-
+Console.WriteLine(Defualt);
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
