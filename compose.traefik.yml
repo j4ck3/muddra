@@ -1,0 +1,27 @@
+# Use this if you already have Traefik running separately
+services:
+  muddra:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: muddra
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - Urls=http://0.0.0.0:8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.muddra.rule=Host(`yourdomain.com`)"
+      - "traefik.http.routers.muddra.entrypoints=websecure"
+      - "traefik.http.routers.muddra.tls.certresolver=letsencrypt"
+      - "traefik.http.services.muddra.loadbalancer.server.port=8080"
+    networks:
+      - traefik  # Change this to your Traefik network name
+
+networks:
+  traefik:
+    external: true  # Connect to existing Traefik network
+

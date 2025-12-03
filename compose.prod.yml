@@ -1,0 +1,55 @@
+services:
+  traefik:
+    image: traefik:v3.2
+    container_name: traefik
+    restart: unless-stopped
+    command:
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.letsencrypt.acme.email=jacobhallgren@live.se"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+      # Redirect HTTP to HTTPS
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - letsencrypt:/letsencrypt
+    networks:
+      - web
+
+  muddra:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: muddra
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - Urls=http://0.0.0.0:8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.muddra.rule=Host(`muddra.com`)"
+      - "traefik.http.routers.muddra.entrypoints=websecure"
+      - "traefik.http.routers.muddra.tls.certresolver=letsencrypt"
+      - "traefik.http.services.muddra.loadbalancer.server.port=8080"
+    networks:
+      - web
+
+volumes:
+  letsencrypt:
+
+networks:
+  web:
+    driver: bridge
+

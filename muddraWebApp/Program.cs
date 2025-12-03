@@ -3,25 +3,15 @@ using Microsoft.AspNetCore.Identity;
 using muddraWebApp.Contexts;
 using muddraWebApp.Repos;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-
-
-// IConfiguration configuration = new ConfigurationBuilder()
-//     .SetBasePath(Directory.GetCurrentDirectory())
-//     .AddJsonFile("appsettings.json")
-//     .Build();
-
-
 
 DotNetEnv.Env.Load();
-string Defualt = Environment.GetEnvironmentVariable("DEFUALT_CONNECTION")!;
-Console.WriteLine(Defualt);
+string connectionString = Environment.GetEnvironmentVariable("DEFAULT_CONNECTION")!;
+Console.WriteLine(connectionString);
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
-
 builder.Services.AddDbContext<DataContext>(o =>
-    o.UseMySql(Defualt, ServerVersion.AutoDetect(Defualt)));
+    o.UseNpgsql(connectionString));
 
 //identity options
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
