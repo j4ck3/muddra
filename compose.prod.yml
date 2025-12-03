@@ -1,34 +1,9 @@
-services:
-  traefik:
-    image: traefik:v3.2
-    container_name: traefik
-    restart: unless-stopped
-    command:
-      - "--api.dashboard=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
-      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.letsencrypt.acme.email=jacobhallgren@live.se"
-      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
-      # Redirect HTTP to HTTPS
-      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - letsencrypt:/letsencrypt
-    networks:
-      - web
+# Production - uses pre-built image from GitHub Container Registry
+# Connects to external Traefik network for reverse proxy
 
+services:
   muddra:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/j4ck3/muddra:latest
     container_name: muddra
     restart: unless-stopped
     env_file:
@@ -44,12 +19,8 @@ services:
       - "traefik.http.routers.muddra.tls.certresolver=letsencrypt"
       - "traefik.http.services.muddra.loadbalancer.server.port=8080"
     networks:
-      - web
-
-volumes:
-  letsencrypt:
+      - traefik
 
 networks:
-  web:
-    driver: bridge
-
+  traefik:
+    external: true

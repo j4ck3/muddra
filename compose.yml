@@ -1,16 +1,18 @@
+# Local development - builds from source, no Traefik
+# Uses database connection from .env (your VPS PostgreSQL)
+
 services:
   muddra:
     build:
       context: .
       dockerfile: Dockerfile
-    hostname: muddra
     container_name: muddra
     ports:
       - "8080:8080"
     env_file:
       - .env
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:8080
       - Urls=http://0.0.0.0:8080
     restart: unless-stopped

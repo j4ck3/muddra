@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 DotNetEnv.Env.Load();
 string connectionString = Environment.GetEnvironmentVariable("DEFAULT_CONNECTION")!;
-Console.WriteLine(connectionString);
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
