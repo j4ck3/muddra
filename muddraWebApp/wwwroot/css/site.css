@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:wght@100;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:wght@100;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 /*COLORS --------------*/
 /* SCSS HEX */
@@ -217,29 +217,88 @@ header .toggle {
 
 .service-card {
   overflow: hidden;
-  max-width: auto;
   border-radius: 10px;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .service-card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background: linear-gradient(160deg, rgba(0, 0, 0, 0.24) 0%, rgba(11, 11, 11, 0.71) 100%);
+    max-width: 800px;
+  }
 }
 .service-card .service-image-container {
   overflow: hidden;
+}
+@media (min-width: 768px) {
+  .service-card .service-image-container {
+    flex-shrink: 0;
+    width: 200px;
+    height: 150px;
+  }
+}
+@media (min-width: 992px) {
+  .service-card .service-image-container {
+    width: 240px;
+    height: 180px;
+  }
 }
 .service-card .service-image-container .service-img-thumbnail {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   overflow: hidden;
+}
+@media (min-width: 768px) {
+  .service-card .service-image-container .service-img-thumbnail {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px 0 0 10px;
+  }
 }
 .service-card .service-card-content {
   padding: 15px;
   border-radius: 0 0 10px 10px;
   background: linear-gradient(160deg, rgba(0, 0, 0, 0.24) 0%, rgba(11, 11, 11, 0.71) 100%);
 }
+@media (min-width: 768px) {
+  .service-card .service-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0;
+    background: none;
+    padding: 20px 30px;
+  }
+}
+.service-card .service-card-content .service-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+@media (min-width: 768px) {
+  .service-card .service-card-content .service-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+}
 .service-card .service-card-content span {
   display: block;
   color: white;
   font-size: 16px;
   font-weight: 500;
+}
+@media (min-width: 768px) {
+  .service-card .service-card-content span {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
 }
 
 .contact-msg {
@@ -399,3 +458,5 @@ header .toggle {
     width: 300px;
   }
 }
+
+/*# sourceMappingURL=site.css.map */

@@ -1,29 +1,60 @@
 ﻿@model LandingViewModel
 @if (Model != null)
 {
-    <section class="container">
-        <div class="d-flex flex-row mt-5">
-            <div class="landing-container">
-                @if (Model.Title != null)
-                {
-                    <h1 class="text-white text-center fw-medium fs-2">@Model.Title</h1>
-                }
+    <section class="min-h-[calc(100vh-110px)] flex flex-col justify-center">
+        <div class="container mx-auto px-6 lg:px-12 flex-1 flex items-center">
+            <div class="w-full">
+                <!-- Text Content -->
+                <div class="text-left max-w-2xl">
+                    @if (Model.Title != null)
+                    {
+                        <h1 class="text-2xl md:text-3xl font-bold text-white mb-6">
+                            @Model.Title
+                        </h1>
+                    }
 
-                @if (Model.Messgae != null)
-                {
-                    <h2 class="fw-medium text-center fs-6 mt-3">@Model.Messgae</h2>
-                }
-                <div class="d-flex justify-content-center flex-column align-items-center flex-lg-row ">
-                    <a class="btn-theme m-2" href="#services">Se alla Tjänster</a>
-                    <a class="btn-theme m-2" asp-controller="home" asp-action="contact">Kontakta oss<i class="fa-regular fa-paper-plane ms-2"></i></a>
+                    @if (Model.Messgae != null)
+                    {
+                        <p class="text-xl md:text-2xl text-white font-normal leading-relaxed mb-10">
+                            @Model.Messgae
+                        </p>
+                    }
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#services" 
+                           class="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold rounded-full bg-white text-[#001021] hover:bg-cyan-100 transition-colors">
+                            Se alla Tjänster
+                        </a>
+                        <a asp-controller="home" asp-action="contact"
+                           class="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold rounded-full bg-white text-[#001021] hover:bg-cyan-100 transition-colors">
+                            Kontakta oss
+                            <i class="fa-regular fa-paper-plane ml-2"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="img-container">
-                @if (Model.ImgUrl != null)
-                {
-                    <img src="@Model.ImgUrl" alt="@Model.Title" />
-                }
-            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div id="scroll-indicator" class="flex justify-center pb-8 mt-auto animate-bounce transition-opacity duration-300">
+            <a href="#services" class="text-white hover:text-cyan-300 transition-colors">
+                <i class="fa-solid fa-chevron-down text-3xl"></i>
+            </a>
         </div>
     </section>
+    
+    <script>
+        (function() {
+            const indicator = document.getElementById('scroll-indicator');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    indicator.style.opacity = '0';
+                    indicator.style.pointerEvents = 'none';
+                } else {
+                    indicator.style.opacity = '1';
+                    indicator.style.pointerEvents = 'auto';
+                }
+            });
+        })();
+    </script>
 }

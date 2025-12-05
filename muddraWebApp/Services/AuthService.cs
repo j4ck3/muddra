@@ -31,7 +31,11 @@ public class AuthService
                 roleName = "admin";
 
             IdentityUser identityUser = model;
-            await _userManager.CreateAsync(identityUser, model.Password);
+            var result = await _userManager.CreateAsync(identityUser, model.Password);
+            
+            if (!result.Succeeded)
+                return false;
+            
             await _userManager.AddToRoleAsync(identityUser, roleName);
 
             return true;

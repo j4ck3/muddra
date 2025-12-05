@@ -23,7 +23,7 @@ public class HomeViewService
             },
             ServicesGrid = new ServicesViewModel
             {
-                Title = "Våra Tjänster vi erbjuder",
+                Title = "Våra Tjänster:",
                 ServiceItems = await _servicesService.GetAllAsync()
 
             }

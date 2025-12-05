@@ -1,0 +1,20 @@
+# Local development with hot reload
+# Uses database connection from .env
+
+services:
+  muddra:
+    image: mcr.microsoft.com/dotnet/sdk:9.0
+    container_name: muddra-dev
+    working_dir: /app
+    ports:
+      - "5293:5293"
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5293
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+    volumes:
+      - ./muddraWebApp:/app
+    command: dotnet watch run --urls http://0.0.0.0:5293
+    restart: unless-stopped

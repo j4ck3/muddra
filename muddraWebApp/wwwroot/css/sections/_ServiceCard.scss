@@ -1,17 +1,45 @@
-﻿.service-card {
+﻿@import '../core/mixins';
+
+.service-card {
     overflow: hidden;
-    max-width: auto;
     border-radius: 10px;
+    margin-bottom: 1rem;
+
+    // Horizontal layout on larger screens
+    @include md {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        background: linear-gradient(160deg, rgba(0, 0, 0, 0.24) 0%, rgba(11, 11, 11, 0.71) 100%);
+        max-width: 800px;
+    }
 
     .service-image-container {
         overflow: hidden;
+
+        @include md {
+            flex-shrink: 0;
+            width: 200px;
+            height: 150px;
+        }
+
+        @include lg {
+            width: 240px;
+            height: 180px;
+        }
 
         .service-img-thumbnail {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: contain;
+            object-fit: cover;
             overflow: hidden;
+
+            @include md {
+                height: 100%;
+                width: 100%;
+                border-radius: 10px 0 0 10px;
+            }
         }
     }
 
@@ -20,11 +48,39 @@
         border-radius: 0 0 10px 10px;
         background: linear-gradient(160deg, rgba(0, 0, 0, 0.24) 0%, rgba(11, 11, 11, 0.71) 100%);
 
+        @include md {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 0;
+            background: none;
+            padding: 20px 30px;
+        }
+
+        .service-title {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+
+            @include md {
+                font-size: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+
         span {
             display: block;
             color: white;
             font-size: 16px;
             font-weight: 500;
+
+            @include md {
+                font-size: 14px;
+                line-height: 1.5;
+                opacity: 0.85;
+            }
         }
     }
 }
