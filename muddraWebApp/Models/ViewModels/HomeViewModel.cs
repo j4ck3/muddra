@@ -5,6 +5,6 @@
         public LandingViewModel? Landing { get; set; }
         public ServicesViewModel? ServicesGrid { get; set; }
         public CreateServiceViewModel? CreateService { get; set; }
-
+        public ContactViewModel? Contact { get; set; }
     }
 }

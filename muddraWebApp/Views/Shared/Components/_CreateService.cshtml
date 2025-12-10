@@ -1,25 +1,29 @@
 ﻿@model CreateServiceViewModel
 <div class="container">
-    <div class="title mt-5 mb-2 fs-6 fw-bold">Ny Tjänst</div>
-    <form method="POST" class="validate-form" enctype="multipart/form-data" asp-action="CreateService" novalidate>
-        <div asp-validation-summary="ModelOnly" class="error"></div>
-        <div class="form-group mb-4">
-            <label asp-for="Title"></label>
-            <input required minlength="2" asp-for="Title" type="text">
-            <span asp-validation-for="Title"></span>
+    <div class="mt-5 mb-2 text-sm font-bold">Ny Tjänst</div>
+    <form method="POST" class="validate-form w-[600px] h-[70dvh]" enctype="multipart/form-data" asp-action="CreateService" novalidate>
+        <div asp-validation-summary="ModelOnly" class="my-3">
+            <ul class="m-0 p-0">
+                <li class="ml-0 text-center text-sm font-semibold py-1 w-full border border-red-500 text-red-500 bg-[#350000] list-none rounded px-0"></li>
+            </ul>
+        </div>
+        <div class="relative mb-4">
+            <label class="text-sm ml-4" asp-for="Title"></label>
+            <input required minlength="2" asp-for="Title" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm">
+            <span asp-validation-for="Title" class="ml-4 text-sm font-medium text-red-500"></span>
             <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
         </div>
-        <div class="form-group mb-4">
-            <label asp-for="Description"></label>
-            <textarea minlength="10" asp-for="Description" type="text"></textarea>
-            <span asp-validation-for="Description"></span>
+        <div class="relative mb-4">
+            <label class="text-sm ml-4" asp-for="Description"></label>
+            <textarea minlength="10" asp-for="Description" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm"></textarea>
+            <span asp-validation-for="Description" class="ml-4 text-sm font-medium text-red-500"></span>
             <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
         </div>
-        <div class="form-group mb-4">
-            <label asp-for="ImageUrl"></label>
-            <input asp-for="ImageUrl">
-            <span asp-validation-for="ImageUrl"></span>
+        <div class="relative mb-4">
+            <label class="text-sm ml-4" asp-for="ImageUrl"></label>
+            <input asp-for="ImageUrl" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm">
+            <span asp-validation-for="ImageUrl" class="ml-4 text-sm font-medium text-red-500"></span>
         </div>
-        <button type="submit" class="btn-theme">Spara</button>
+        <button type="submit" class="bg-white px-8 py-2 rounded-[50px] block w-[200px] text-center outline-none border-none font-semibold text-sm text-[#2d4a6b] hover:bg-gray-100 transition-colors">Spara</button>
     </form>
 </div>

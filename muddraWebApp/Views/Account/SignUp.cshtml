@@ -2,39 +2,43 @@
 @{
     string passwordRegex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':""\\|,.<>\/?]).+$";
 }
-<section class="contact-form">
+<section>
     <div class="container">
-        <h2 class="title mb-3">Register Your Account</h2>
-        <form id="register-form" class="validate-form" method="POST" novalidate>
-            <div asp-validation-summary="ModelOnly" class="error"></div>
-            <div class="mobile form-group mb-3">
-                <label asp-for="PhoneNumber"></label>
-                <input asp-for="PhoneNumber" id="mobile" type="text">
-                <span asp-validation-for="PhoneNumber" class="error"></span>
+        <h2 class="mb-3">Register Your Account</h2>
+        <form id="register-form" class="validate-form w-[600px] h-[70dvh]" method="POST" novalidate>
+            <div asp-validation-summary="ModelOnly" class="my-3">
+                <ul class="m-0 p-0">
+                    <li class="ml-0 text-center text-sm font-semibold py-1 w-full border border-red-500 text-red-500 bg-[#350000] list-none rounded px-0"></li>
+                </ul>
+            </div>
+            <div class="relative mb-3">
+                <label class="text-sm ml-4" asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" id="mobile" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm">
+                <span asp-validation-for="PhoneNumber" class="ml-4 text-sm font-medium text-red-500"></span>
                 <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
             </div>
-            <div class="email form-group mb-3">
-                <label asp-for="Email"></label>
+            <div class="relative mb-3">
+                <label class="text-sm ml-4" asp-for="Email"></label>
                 <span>*</span>
-                <input pattern="[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" asp-for="Email" id="email" type="email">
-                <span asp-validation-for="Email" class="error"></span>
+                <input pattern="[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" asp-for="Email" id="email" type="email" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm">
+                <span asp-validation-for="Email" class="ml-4 text-sm font-medium text-red-500"></span>
                 <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
             </div>
-            <div class="password form-group mb-3">
-                <label asp-for="Password"></label>
+            <div class="relative mb-3">
+                <label class="text-sm ml-4" asp-for="Password"></label>
                 <span>*</span>
-                <input required minlength="8" pattern="@passwordRegex" asp-for="Password" id="password" type="password">
-                <span asp-validation-for="Password" class="error"></span>
+                <input required minlength="8" pattern="@passwordRegex" asp-for="Password" id="password" type="password" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm">
+                <span asp-validation-for="Password" class="ml-4 text-sm font-medium text-red-500"></span>
                 <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
             </div>
-            <div class="confirmPassword form-group mb-3">
-                <label asp-for="ConfirmPassword"></label>
+            <div class="relative mb-3">
+                <label class="text-sm ml-4" asp-for="ConfirmPassword"></label>
                 <span>*</span>
-                <input required match="password" asp-for="ConfirmPassword" id="confirmPassword" type="password">
-                <span asp-validation-for="ConfirmPassword" class="error"></span>
+                <input required match="password" asp-for="ConfirmPassword" id="confirmPassword" type="password" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm">
+                <span asp-validation-for="ConfirmPassword" class="ml-4 text-sm font-medium text-red-500"></span>
                 <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
             </div>
-            <button class="btn-theme">Registrera dig</button>
+            <button class="bg-white px-8 py-2 rounded-[50px] block w-[200px] text-center outline-none border-none font-semibold text-sm text-[#2d4a6b] hover:bg-gray-100 transition-colors">Registrera dig</button>
         </form>
     </div>
 </section>

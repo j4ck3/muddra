@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="compilerconfig.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <UpToDateCheckBuilt Include="wwwroot/css/site.scss" Set="Css" />
-  </ItemGroup>
-  
-<ItemGroup>
     <PackageReference Include="DotNetEnv" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.0" />
@@ -34,7 +27,4 @@
     <Folder Include="wwwroot\Assets\Imgs\Services\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="compilerconfig.json" />
-  </ItemGroup>
 </Project>

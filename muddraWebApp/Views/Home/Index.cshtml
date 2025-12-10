@@ -5,13 +5,11 @@
     <partial name="../Shared/Sections/_ServicesGrid" model="Model.ServicesGrid" />
 </div>
 
-@if (TempData.ContainsKey("ErrorMessage"))
-{
-    <p class="text-danger">@TempData["ErrorMessage"]</p>
-}
 @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
 {
     <partial name="../Shared/Components/_CreateService" model="Model.CreateService"/>
 }
 
 <partial name="../Shared/Sections/_BeforeAfter" />
+
+<partial name="../Shared/Sections/_Contact" model="Model.Contact" />

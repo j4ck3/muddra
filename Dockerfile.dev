@@ -1,0 +1,22 @@
+FROM mcr.microsoft.com/dotnet/sdk:9.0
+WORKDIR /app
+
+# Install Node.js and npm for Tailwind CSS
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs
+
+# Install dotnet-ef tools for migrations if needed
+RUN dotnet tool install --global dotnet-ef --version 9.0.0 || true
+
+# Copy entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Expose ports
+EXPOSE 8080
+EXPOSE 8081
+
+# Use entrypoint script for hot reload
+# The source code will be mounted as a volume at runtime
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+

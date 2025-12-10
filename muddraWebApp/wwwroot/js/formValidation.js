@@ -61,16 +61,16 @@ const validateForm = formSelector => {
         for (const option of validationOptions) {
             if (input.hasAttribute(option.attribute) && !option.isValid(input)) {
                 errorContainer.textContent = option.errorMessage(input, label);
-                errorIcon.classList.remove('d-none')
-                successIcon.classList.add('d-none')
+                errorIcon.classList.remove('hidden')
+                successIcon.classList.add('hidden')
                 formGroupError = true;
             }
         }
 
         if (!formGroupError) {
             errorContainer.textContent = '',
-            errorIcon.classList.add('d-none')
-            successIcon.classList.remove('d-none')
+            errorIcon.classList.add('hidden')
+            successIcon.classList.remove('hidden')
         }
     };
 
@@ -80,6 +80,74 @@ const validateForm = formSelector => {
             validateSingleFormGroup(event.srcElement.parentElement);
         })
     );
+
+    // Validate entire form before submission
+    const validateEntireForm = () => {
+        let hasErrors = false;
+        // Find all inputs/textarea that have validation indicators nearby
+        const inputs = formElement.querySelectorAll('input:not([type="hidden"]):not(.bg-transparent), textarea:not(.bg-transparent), select:not(.bg-transparent)');
+        
+        inputs.forEach(input => {
+            // Skip honeypot fields and submit buttons
+            if (input.type === 'submit' || input.type === 'button' || input.classList.contains('bg-transparent')) {
+                return;
+            }
+            
+            // Find the parent form group (look for closest parent with validation indicators)
+            let formGroup = input.closest('.relative');
+            if (!formGroup) {
+                formGroup = input.parentElement;
+            }
+            
+            const label = formGroup.querySelector('label');
+            const errorContainer = formGroup.querySelector('.errormsg');
+            const errorIcon = formGroup.querySelector('.icon-error');
+            const successIcon = formGroup.querySelector('.icon-success');
+            let formGroupError = false;
+            
+            for (const option of validationOptions) {
+                if (input.hasAttribute(option.attribute) && !option.isValid(input)) {
+                    if (errorContainer) errorContainer.textContent = option.errorMessage(input, label);
+                    if (errorIcon) errorIcon.classList.remove('hidden');
+                    if (successIcon) successIcon.classList.add('hidden');
+                    formGroupError = true;
+                    hasErrors = true;
+                    break;
+                }
+            }
+            
+            if (!formGroupError && input.value.trim() !== '') {
+                if (errorContainer) errorContainer.textContent = '';
+                if (errorIcon) errorIcon.classList.add('hidden');
+                if (successIcon) successIcon.classList.remove('hidden');
+            }
+        });
+        
+        return !hasErrors;
+    };
+
+    // Prevent form submission if there are errors
+    formElement.addEventListener('submit', event => {
+        if (!validateEntireForm()) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Scroll to first error
+            const firstError = formElement.querySelector('.icon-error:not(.hidden)');
+            if (firstError) {
+                const formGroup = firstError.closest('.relative, [class*="form-group"]');
+                if (formGroup) {
+                    formGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    const input = formGroup.querySelector('input, textarea, select');
+                    if (input) {
+                        setTimeout(() => input.focus(), 300);
+                    }
+                }
+            }
+            
+            return false;
+        }
+    });
 };
 
 validateForm('.validate-form');

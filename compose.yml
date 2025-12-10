@@ -1,18 +1,27 @@
 # Local development - builds from source, no Traefik
 # Uses database connection from .env (your VPS PostgreSQL)
+# Hot reload enabled with dotnet watch
 
 services:
   muddra:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     container_name: muddra
     ports:
       - "8080:8080"
+    volumes:
+      # Mount source code for hot reload
+      - ./muddraWebApp:/app
+      # Exclude build artifacts
+      - /app/bin
+      - /app/obj
     env_file:
       - .env
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:8080
       - Urls=http://0.0.0.0:8080
+      - DOTNET_USE_POLLING_FILE_WATCHER=true
+      - DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true
     restart: unless-stopped

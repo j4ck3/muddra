@@ -25,8 +25,8 @@ public class HomeViewService
             {
                 Title = "Våra Tjänster:",
                 ServiceItems = await _servicesService.GetAllAsync()
-
-            }
+            },
+            Contact = new ContactViewModel()
         };
         return viewModel;
     }

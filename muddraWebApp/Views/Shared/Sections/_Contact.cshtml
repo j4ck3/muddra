@@ -1,0 +1,108 @@
+@model ContactViewModel
+@{
+    string emailRegExp = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+}
+<div id="contact-form" class="container pt-8 pb-4">
+    @if (TempData.ContainsKey("ErrorMessage"))
+    {
+        <div class="flex justify-center mb-4">
+            <div class="w-full max-w-2xl">
+                <div class="!bg-red-600 !border-2 !border-red-400 !rounded-xl !p-5 !shadow-lg">
+                    <p class="!font-semibold !text-center !text-lg !text-red-100">@TempData["ErrorMessage"]</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const contactForm = document.getElementById('contact-form');
+                if (contactForm) {
+                    setTimeout(() => {
+                        contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            });
+        </script>
+    }
+
+    <div class="flex justify-center mt-5">
+
+        @if (TempData.ContainsKey("SuccessMessage"))
+        {
+            <div class="flex justify-center items-center mb-5">
+                <div class="w-full max-w-2xl bg-gradient-to-br from-green-500/20 to-cyan-500/20 border-2 border-green-400/50 rounded-2xl p-8 shadow-xl backdrop-blur-sm">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="mb-4 w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center border-2 border-green-400/50">
+                            <i class="fa-solid fa-circle-check text-3xl text-green-400"></i>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-light text-center mb-4 text-black">@TempData["SuccessMessage"]</h2>
+                        <p class="text-center text-black/90 text-lg mb-2">
+                            Vi har mottagit ditt medelande och kommer att besvara det så fort vi kan.
+                        </p>
+                        <p class="text-center text-black/70 text-base">
+                            Med vänliga hälsningar Hjälmarens Sjötjänst AB
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (!TempData.ContainsKey("SuccessMessage"))
+        {
+            <form class="validate-form w-[600px] h-[70dvh] bg-transparent" asp-action="Index" asp-controller="Home" method="POST" novalidate>
+                <h2 class="mt-5 mb-2 text-3xl text-center font-light text-black">Skicka oss ett medelande</h2>
+                @if (!Html.ViewData.ModelState.IsValid)
+                {
+                    <div asp-validation-summary="ModelOnly" class="my-3 visually-hidden">
+                        <ul class="m-0 p-0">
+                            <li class="ml-0 text-center text-sm font-semibold py-1 w-full border border-red-500 text-red-500 bg-[#350000] list-none rounded px-0"></li>
+                        </ul>
+                    </div>
+                }
+
+                <div class="relative mb-4">
+                    <label class="text-sm ml-4 text-black font-medium mb-2 block" asp-for="Email"></label>
+                    <span asp-validation-for="Email" class="ml-4 text-sm font-medium text-red-500"></span>
+                    <div class="relative">
+                        <input required pattern="@emailRegExp" asp-for="Email" type="email" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-black text-sm focus:bg-black/70 focus:ring-2 focus:ring-cyan-400/50 transition-all pr-12">
+                        <partial name="../Shared/Components/_FormValidationIndicators" />
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="text-sm ml-4 text-black font-medium mb-2 block" asp-for="Name"></label>
+                    <span asp-validation-for="Name" class="ml-4 text-sm font-medium text-red-500"></span>
+                    <div class="relative">
+                        <input required asp-for="Name" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-black text-sm focus:bg-black/70 focus:ring-2 focus:ring-cyan-400/50 transition-all pr-12">
+                        <partial name="../Shared/Components/_FormValidationIndicators" />
+                    </div>
+                </div>
+
+                <div class="h-px">
+                    <label class="text-sm ml-4 text-transparent" asp-for="LastName"></label>
+                    <span asp-validation-for="LastName" class="ml-4 text-sm font-medium text-red-500"></span>
+                    <input asp-for="LastName" type="text" class="bg-transparent">
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="text-sm ml-4 text-black font-medium mb-2 block" asp-for="Message"></label>
+                    <span asp-validation-for="Message" class="ml-4 text-sm font-medium text-red-500"></span>
+                    <div class="relative">
+                        <textarea rows="3" required asp-for="Message" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-black text-sm resize-none focus:bg-black/70 focus:ring-2 focus:ring-cyan-400/50 transition-all pr-12"></textarea>
+                        <partial name="../Shared/Components/_FormValidationIndicators" />
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <label class="text-sm ml-4 text-black font-medium mb-2 block" asp-for="Area"></label>
+                    <span class="text-end inline ml-4 text-sm font-medium text-red-500" asp-validation-for="Area"></span>
+                    <div class="relative">
+                        <input required asp-for="Area" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-black text-sm focus:bg-black/70 focus:ring-2 focus:ring-cyan-400/50 transition-all pr-12">
+                        <partial name="../Shared/Components/_FormValidationIndicators" />
+                    </div>
+                </div>
+                <button type="submit" class="bg-white px-8 py-2 rounded-[50px] block w-full text-center outline-none border-none font-semibold text-sm text-[#001021] hover:bg-gray-100 transition-colors">Skicka<i class="ms-2 fa-solid fa-paper-plane"></i></button>
+            </form>
+        }
+
+    </div>
+</div>

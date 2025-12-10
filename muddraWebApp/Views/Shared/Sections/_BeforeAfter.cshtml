@@ -1,29 +1,29 @@
-﻿<h3 class="beforeafter-title">Före och Efter bilder</h3>
-<div class="beforeafter-hero">
-    <div class="image-box">
-        <div class="button-box">
-            <div id="btn"></div>
-            <button type="button" class="toggle-btn" onclick="after()">Före</button>
-            <button type="button" class="toggle-btn" onclick="before()">Efter</button>
+﻿<h3 class="mt-20 mb-8 text-center text-4xl font-light text-white">Före och Efter bilder</h3>
+<div class="flex justify-center rounded-[30px] mb-20 gap-16 max-[1100px]:flex-col max-[1100px]:items-center max-[1100px]:shrink">
+    <div class="w-[430px] h-[720px] relative p-[5px] rounded-[30px] overflow-hidden max-[1100px]:mb-12 max-[1100px]:w-[300px]">
+        <div class="flex flex-row justify-evenly w-[220px] my-[25px] mx-auto relative rounded-[50px] bg-gradient-to-r from-[#6ba3e8] to-[#b3d3f5] z-[2]">
+            <div id="btn" class="top-0 left-0 absolute w-[109px] h-[98%] rounded-[50px] border border-white transition-all duration-500"></div>
+            <button type="button" class="text-white font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="after()">Före</button>
+            <button type="button" class="text-white font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="before()">Efter</button>
         </div>
-        <div class="imgs-container" id="before">
+        <div class="imgs-container absolute -top-[30px] transition-all duration-500" id="before">
             <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/muddra-before.webp" alt="muddring före">
         </div>
-        <div class="imgs-container" id="after">
+        <div class="imgs-container absolute -top-[30px] transition-all duration-500" id="after">
             <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/muddra-after.webp" alt="muddring efter">
         </div>
     </div>
 
-    <div class="image-box">
-        <div class="button-box">
-            <div id="btn1"></div>
-            <button type="button" class="toggle-btn" onclick="after1()">Före</button>
-            <button type="button" class="toggle-btn" onclick="before1()">Efter</button>
+    <div class="w-[430px] h-[720px] relative p-[5px] rounded-[30px] overflow-hidden max-[1100px]:mb-12 max-[1100px]:w-[300px]">
+        <div class="flex flex-row justify-evenly w-[220px] my-[25px] mx-auto relative rounded-[50px] bg-gradient-to-r from-[#6ba3e8] to-[#b3d3f5] z-[2]">
+            <div id="btn1" class="top-0 left-0 absolute w-[109px] h-[98%] rounded-[50px] border border-white transition-all duration-500"></div>
+            <button type="button" class="text-white font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="after1()">Före</button>
+            <button type="button" class="text-white font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="before1()">Efter</button>
         </div>
-        <div class="imgs-container1" id="before1">
+        <div class="imgs-container1 absolute -top-[30px] transition-all duration-500" id="before1">
             <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/brygga-before.webp" alt="brygga före">
         </div>
-        <div class="imgs-container1" id="after1">
+        <div class="imgs-container1 absolute -top-[30px] transition-all duration-500" id="after1">
             <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/brygga-after.webp" alt="brygga efter">
         </div>
     </div>
@@ -62,4 +62,14 @@
         b.style.left = "450px"
         c.style.left = "0"
     }
+    
+    // Set initial positions
+    document.addEventListener('DOMContentLoaded', () => {
+        if (x) x.style.left = "0"
+        if (y) y.style.left = "450px"
+        if (z) z.style.left = "0"
+        if (a) a.style.left = "0"
+        if (b) b.style.left = "450px"
+        if (c) c.style.left = "0"
+    })
 </script>

@@ -1,21 +1,239 @@
-﻿<header>
-    <div class="container">
-        <img class="logo" src="~/Assets/Imgs/App/logo.png" alt="hjälmarens sjöstjänst">
-        <menu>
-            <nav id="menu" class="menu-links d-none d-lg-block">
-                <a class="link" asp-controller="home" asp-action="index">Hem</a>
-                <a class="link" asp-controller="home" asp-action="contact">Kontakt</a>
-                @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                {
-                        <a class="link" asp-controller="admin" asp-action="users">Dashboard</a>
-                }
-                @if (signInManager.IsSignedIn(User))
-                {
-                    <a class="link" asp-controller="account" asp-action="Index">@User.Identity?.Name</a>
-                    <a class="link" asp-controller="account" asp-action="signout">Logga ut</a>
-                }
-            </nav>
-        </menu>
-        <button class="toggle" name="menu" data-option="toggle"><i id="icon" class="fa-solid fa-bars" data-target="#menu"></i><span class="sr-only m-0 p-0">visa menyn</span></button>
+﻿@*
+  Navigation Component - shadcn/ui style
+  - Bottom bar on mobile only
+  - Full-height sidebar on desktop with p-4 spacing
+  - Pure Tailwind CSS (no custom styles)
+*@
+
+<!-- Mobile Bottom Nav (only visible on small screens) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#001021] shadow-[0_-4px_20px_rgba(0,0,0,0.3)] md:hidden pb-[env(safe-area-inset-bottom)]">
+    <div class="flex items-center justify-around h-16 px-2">
+        <a asp-controller="home" asp-action="index" 
+           class="nav-link-mobile flex flex-col items-center gap-1 px-4 py-2 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/15"
+           data-page="home">
+            <i class="fa-solid fa-house text-xl"></i>
+            <span class="text-[10px] font-medium">Hem</span>
+        </a>
+        <a href="#contact-form" 
+           class="nav-link-mobile flex flex-col items-center gap-1 px-4 py-2 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/15"
+           data-page="contact">
+            <i class="fa-solid fa-envelope text-xl"></i>
+            <span class="text-[10px] font-medium">Kontakt</span>
+        </a>
+        @if (signInManager.IsSignedIn(User))
+        {
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="admin" asp-action="users" 
+                   class="nav-link-mobile flex flex-col items-center gap-1 px-4 py-2 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/15"
+                   data-page="admin">
+                    <i class="fa-solid fa-gauge-high text-xl"></i>
+                    <span class="text-[10px] font-medium">Admin</span>
+                </a>
+            }
+            <a asp-controller="account" asp-action="Index" 
+               class="nav-link-mobile flex flex-col items-center gap-1 px-4 py-2 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/15"
+               data-page="account">
+                <div class="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-600 text-white text-[10px] font-bold">
+                    @(User.Identity?.Name?.Substring(0, 1).ToUpper())
+                </div>
+                <span class="text-[10px] font-medium">Profil</span>
+            </a>
+        }
     </div>
-</header>
+</nav>
+
+<!-- Desktop Sidebar (hidden on mobile, full height with p-4 spacing) -->
+<aside id="sidebar" 
+       class="group/sidebar hidden md:flex fixed top-4 left-4 bottom-4 z-50 w-56 flex-col rounded-2xl border border-white/10 bg-[#001021]/95 backdrop-blur-md shadow-2xl transition-[width] duration-300 ease-in-out">
+    
+    <!-- Logo / Toggle -->
+    <div class="flex items-center h-16 px-4 border-b border-white/10">
+        <a href="/" class="flex items-center gap-3 overflow-hidden">
+            <img src="~/Assets/Imgs/App/logo.png" alt="Logo" class="h-9 w-9 object-contain flex-shrink-0">
+            <span class="sidebar-text text-base font-semibold text-white whitespace-nowrap transition-all duration-200">Hjälmarens</span>
+        </a>
+        <button id="sidebar-toggle" 
+                type="button"
+                aria-label="Minimera meny"
+                class="ml-auto p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-all flex-shrink-0">
+            <svg id="toggle-icon" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Navigation Links -->
+    <nav class="flex-1 py-6 px-3 space-y-2 overflow-y-auto overflow-x-hidden">
+        <div class="nav-item relative group">
+            <a asp-controller="home" asp-action="index" 
+               class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/10"
+               data-page="home">
+                <i class="fa-solid fa-house text-lg flex-shrink-0 w-6 text-center"></i>
+                <span class="sidebar-text text-sm font-medium whitespace-nowrap transition-all duration-200">Hem</span>
+            </a>
+            <div class="tooltip hidden absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3 py-1.5 rounded-lg bg-white text-[#001021] text-sm font-medium whitespace-nowrap shadow-xl z-50 opacity-0 pointer-events-none transition-opacity group-hover:opacity-100">
+                Hem
+            </div>
+        </div>
+        
+        <div class="nav-item relative group">
+            <a href="#contact-form" 
+               class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/10"
+               data-page="contact">
+                <i class="fa-solid fa-envelope text-lg flex-shrink-0 w-6 text-center"></i>
+                <span class="sidebar-text text-sm font-medium whitespace-nowrap transition-all duration-200">Kontakt</span>
+            </a>
+            <div class="tooltip hidden absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3 py-1.5 rounded-lg bg-white text-[#001021] text-sm font-medium whitespace-nowrap shadow-xl z-50 opacity-0 pointer-events-none transition-opacity group-hover:opacity-100">
+                Kontakt
+            </div>
+        </div>
+        
+        @if (signInManager.IsSignedIn(User))
+        {
+            <div class="my-4 mx-3 h-px bg-white/10"></div>
+            
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="nav-item relative group">
+                    <a asp-controller="admin" asp-action="users" 
+                       class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/10"
+                       data-page="admin">
+                        <i class="fa-solid fa-gauge-high text-lg flex-shrink-0 w-6 text-center text-amber-400"></i>
+                        <span class="sidebar-text text-sm font-medium whitespace-nowrap transition-all duration-200">Dashboard</span>
+                    </a>
+                    <div class="tooltip hidden absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3 py-1.5 rounded-lg bg-white text-[#001021] text-sm font-medium whitespace-nowrap shadow-xl z-50 opacity-0 pointer-events-none transition-opacity group-hover:opacity-100">
+                        Dashboard
+                    </div>
+                </div>
+            }
+            
+            <div class="nav-item relative group">
+                <a asp-controller="account" asp-action="Index" 
+                   class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/10"
+                   data-page="account">
+                    <div class="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-600 text-white text-xs font-bold flex-shrink-0">
+                        @(User.Identity?.Name?.Substring(0, 1).ToUpper())
+                    </div>
+                    <span class="sidebar-text text-sm font-medium whitespace-nowrap transition-all duration-200 truncate">@User.Identity?.Name</span>
+                </a>
+                <div class="tooltip hidden absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3 py-1.5 rounded-lg bg-white text-[#001021] text-sm font-medium whitespace-nowrap shadow-xl z-50 opacity-0 pointer-events-none transition-opacity group-hover:opacity-100">
+                    @User.Identity?.Name
+                </div>
+            </div>
+        }
+    </nav>
+    
+    <!-- Footer -->
+    <div class="px-3 py-4 border-t border-white/10">
+        @if (signInManager.IsSignedIn(User))
+        {
+            <div class="nav-item relative group">
+                <a asp-controller="account" asp-action="signout" 
+                   class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl text-red-400/70 hover:text-red-400 hover:bg-red-500/10 transition-all">
+                    <i class="fa-solid fa-arrow-right-from-bracket text-lg flex-shrink-0 w-6 text-center"></i>
+                    <span class="sidebar-text text-sm font-medium whitespace-nowrap transition-all duration-200">Logga ut</span>
+                </a>
+                <div class="tooltip hidden absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3 py-1.5 rounded-lg bg-white text-[#001021] text-sm font-medium whitespace-nowrap shadow-xl z-50 opacity-0 pointer-events-none transition-opacity group-hover:opacity-100">
+                    Logga ut
+                </div>
+            </div>
+        }
+    </div>
+</aside>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.getElementById('sidebar');
+        const toggle = document.getElementById('sidebar-toggle');
+        const toggleIcon = document.getElementById('toggle-icon');
+        const STORAGE_KEY = 'sidebar-minimized';
+        
+        const sidebarTexts = sidebar?.querySelectorAll('.sidebar-text');
+        const tooltips = sidebar?.querySelectorAll('.tooltip');
+        
+        // Apply minimized state
+        const applyMinimized = (minimized) => {
+            if (!sidebar) return;
+            
+            if (minimized) {
+                sidebar.classList.remove('w-56');
+                sidebar.classList.add('w-[4.5rem]');
+                toggleIcon?.classList.add('rotate-180');
+                
+                sidebarTexts?.forEach(el => {
+                    el.classList.add('opacity-0', 'w-0', 'overflow-hidden');
+                });
+                
+                tooltips?.forEach(el => {
+                    el.classList.remove('hidden');
+                });
+            } else {
+                sidebar.classList.remove('w-[4.5rem]');
+                sidebar.classList.add('w-56');
+                toggleIcon?.classList.remove('rotate-180');
+                
+                sidebarTexts?.forEach(el => {
+                    el.classList.remove('opacity-0', 'w-0', 'overflow-hidden');
+                });
+                
+                tooltips?.forEach(el => {
+                    el.classList.add('hidden');
+                });
+            }
+        };
+        
+        // Restore state from localStorage
+        const savedState = localStorage.getItem(STORAGE_KEY) === 'true';
+        applyMinimized(savedState);
+        
+        // Toggle sidebar
+        toggle?.addEventListener('click', () => {
+            const isMinimized = sidebar.classList.contains('w-[4.5rem]');
+            const newState = !isMinimized;
+            
+            applyMinimized(newState);
+            localStorage.setItem(STORAGE_KEY, newState.toString());
+        });
+        
+        // Mark active links based on current path
+        const currentPath = window.location.pathname.toLowerCase();
+        const links = document.querySelectorAll('.nav-link, .nav-link-mobile');
+        
+        links.forEach(link => {
+            const page = link.dataset.page;
+            let isActive = false;
+            
+            if (page === 'home' && (currentPath === '/' || currentPath === '/home' || currentPath === '/home/index')) {
+                isActive = true;
+            } else if (page === 'contact' && (currentPath === '/' || currentPath === '/home' || currentPath === '/home/index')) {
+                isActive = true;
+            } else if (page === 'admin' && currentPath.includes('/admin')) {
+                isActive = true;
+            } else if (page === 'account' && currentPath.includes('/account')) {
+                isActive = true;
+            }
+            
+            if (isActive) {
+                link.dataset.active = 'true';
+            }
+        });
+        
+        // Smooth scroll to contact form
+        const contactLinks = document.querySelectorAll('a[href="#contact-form"]');
+        contactLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const contactForm = document.getElementById('contact-form');
+                if (contactForm) {
+                    contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Focus first input after scroll
+                    setTimeout(() => {
+                        const firstInput = contactForm.querySelector('input, textarea');
+                        if (firstInput) firstInput.focus();
+                    }, 500);
+                }
+            });
+        });
+    });
+</script>
