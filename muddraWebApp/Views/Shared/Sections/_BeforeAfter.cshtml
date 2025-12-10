@@ -1,10 +1,11 @@
-﻿<h3 class="mt-20 mb-8 text-center text-4xl font-light text-white">Före och Efter bilder</h3>
-<div class="flex justify-center rounded-[30px] mb-20 gap-16 max-[1100px]:flex-col max-[1100px]:items-center max-[1100px]:shrink">
-    <div class="w-[430px] h-[720px] relative p-[5px] rounded-[30px] overflow-hidden max-[1100px]:mb-12 max-[1100px]:w-[300px]">
-        <div class="flex flex-row justify-evenly w-[220px] my-[25px] mx-auto relative rounded-[50px] bg-gradient-to-r from-[#6ba3e8] to-[#b3d3f5] z-[2]">
-            <div id="btn" class="top-0 left-0 absolute w-[109px] h-[98%] rounded-[50px] border border-white transition-all duration-500"></div>
-            <button type="button" class="text-white font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="after()">Före</button>
-            <button type="button" class="text-white font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="before()">Efter</button>
+﻿<div id="before-after" class="max-w-5xl mx-auto px-2 md:px-4 py-4 md:py-12 mb-4">
+    <h3 class="mt-4 md:mt-8 mb-3 md:mb-4 text-left text-lg md:text-xl font-light text-[#ebecf7]/90 pl-8 md:pl-12">Tidigare jobb</h3>
+    <div class="flex justify-center rounded-[30px] mb-8 md:mb-20 gap-8 md:gap-16 max-[1100px]:flex-col max-[1100px]:items-center max-[1100px]:shrink">
+    <div class="w-[430px] h-[720px] relative p-[5px] rounded-[30px] overflow-hidden max-[1100px]:mb-6 md:max-[1100px]:mb-12 max-[1100px]:w-[300px]">
+        <div class="flex flex-row justify-evenly w-[220px] my-[25px] mx-auto relative rounded-[50px] bg-[#171b25] z-[2]">
+            <div id="btn" class="top-0 left-0 absolute w-[109px] h-[98%] rounded-[50px] border border-[#5a6278] transition-all duration-500"></div>
+            <button type="button" class="text-[#ebecf7] font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="after()">Före</button>
+            <button type="button" class="text-[#ebecf7] font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="before()">Efter</button>
         </div>
         <div class="imgs-container absolute -top-[30px] transition-all duration-500" id="before">
             <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/muddra-before.webp" alt="muddring före">
@@ -14,11 +15,11 @@
         </div>
     </div>
 
-    <div class="w-[430px] h-[720px] relative p-[5px] rounded-[30px] overflow-hidden max-[1100px]:mb-12 max-[1100px]:w-[300px]">
-        <div class="flex flex-row justify-evenly w-[220px] my-[25px] mx-auto relative rounded-[50px] bg-gradient-to-r from-[#6ba3e8] to-[#b3d3f5] z-[2]">
-            <div id="btn1" class="top-0 left-0 absolute w-[109px] h-[98%] rounded-[50px] border border-white transition-all duration-500"></div>
-            <button type="button" class="text-white font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="after1()">Före</button>
-            <button type="button" class="text-white font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="before1()">Efter</button>
+    <div class="w-[430px] h-[720px] relative p-[5px] rounded-[30px] overflow-hidden max-[1100px]:mb-6 md:max-[1100px]:mb-12 max-[1100px]:w-[300px]">
+        <div class="flex flex-row justify-evenly w-[220px] my-[25px] mx-auto relative rounded-[50px] bg-[#171b25] z-[2]">
+            <div id="btn1" class="top-0 left-0 absolute w-[109px] h-[98%] rounded-[50px] border border-[#5a6278] transition-all duration-500"></div>
+            <button type="button" class="text-[#ebecf7] font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="after1()">Före</button>
+            <button type="button" class="text-[#ebecf7] font-medium py-2.5 px-[30px] cursor-pointer bg-transparent border-0 outline-none relative" onclick="before1()">Efter</button>
         </div>
         <div class="imgs-container1 absolute -top-[30px] transition-all duration-500" id="before1">
             <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/brygga-before.webp" alt="brygga före">
@@ -27,6 +28,7 @@
             <img class="img-beforeafter" src="~/Assets/Imgs/BeforeAfter/brygga-after.webp" alt="brygga efter">
         </div>
     </div>
+</div>
 </div>
 
 

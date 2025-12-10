@@ -2,12 +2,12 @@
 @{
     string emailRegExp = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
 }
-<div id="contact-form" class="container pt-8 pb-4">
+<div id="contact-form" class="w-full max-w-7xl mx-auto px-2 md:px-4 pt-2 md:pt-8 pb-2 md:pb-4">
     @if (TempData.ContainsKey("ErrorMessage"))
     {
-        <div class="flex justify-center mb-4">
+        <div class="flex justify-center mb-2 md:mb-4">
             <div class="w-full max-w-2xl">
-                <div class="bg-red-600 border-2 border-red-400 rounded-xl p-5 shadow-lg">
+                <div class="bg-red-600 border-2 border-red-400 rounded-xl p-2 md:p-5 shadow-lg">
                     <p class="font-semibold text-center text-lg text-red-100">@TempData["ErrorMessage"]</p>
                 </div>
             </div>
@@ -24,18 +24,18 @@
         </script>
     }
 
-    <div class="flex justify-center mt-5">
+    <div class="flex justify-center mt-2 md:mt-5">
 
         @if (TempData.ContainsKey("SuccessMessage"))
         {
-            <div class="flex justify-center items-center mb-5">
-                <div class="w-full max-w-2xl bg-linear-to-br from-green-500/20 to-cyan-500/20 border-2 border-green-400/50 rounded-2xl p-8 shadow-xl backdrop-blur-sm">
+            <div class="flex justify-center items-center mb-2 md:mb-5">
+                <div class="w-full max-w-2xl bg-linear-to-br from-green-500/20 to-cyan-500/20 border-2 border-green-400/50 rounded-2xl p-4 md:p-8 shadow-xl backdrop-blur-sm">
                     <div class="flex flex-col items-center text-center">
-                        <div class="mb-4 w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center border-2 border-green-400/50">
+                        <div class="mb-2 md:mb-4 w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center border-2 border-green-400/50">
                             <i class="fa-solid fa-circle-check text-3xl text-green-400"></i>
                         </div>
-                        <h2 class="text-4xl md:text-5xl font-light text-center mb-4 text-black">@TempData["SuccessMessage"]</h2>
-                        <p class="text-center text-black/90 text-lg mb-2">
+                        <h2 class="text-4xl md:text-5xl font-light text-center mb-2 md:mb-4 text-black">@TempData["SuccessMessage"]</h2>
+                        <p class="text-center text-black/90 text-lg mb-1 md:mb-2">
                             Vi har mottagit ditt medelande och kommer att besvara det så fort vi kan.
                         </p>
                         <p class="text-center text-black/70 text-base">
@@ -48,59 +48,55 @@
 
         @if (!TempData.ContainsKey("SuccessMessage"))
         {
-            <form class="validate-form w-[600px] h-[70dvh] bg-transparent" asp-action="Index" asp-controller="Home" method="POST" novalidate>
-                <h2 class="mt-5 mb-2 text-3xl text-center font-light text-black">Skicka oss ett medelande</h2>
+            <form class="validate-form w-[600px] max-w-full h-[70dvh] bg-transparent box-border" asp-action="Index" asp-controller="Home" method="POST" novalidate>
+                <h2 class="mt-4 md:mt-8 mb-3 md:mb-4 text-left text-lg md:text-xl font-light text-[#ebecf7]/90">Skicka oss ett medelande</h2>
                 @if (!Html.ViewData.ModelState.IsValid)
                 {
-                    <div asp-validation-summary="ModelOnly" class="my-3 visually-hidden">
+                    <div asp-validation-summary="ModelOnly" class="my-2 md:my-3 visually-hidden">
                         <ul class="m-0 p-0">
                             <li class="ml-0 text-center text-sm font-semibold py-1 w-full border border-red-500 text-red-500 bg-[#350000] list-none rounded px-0"></li>
                         </ul>
                     </div>
                 }
 
-                <div class="relative mb-4">
-                    <label class="text-sm ml-4 text-black font-medium mb-2 block" asp-for="Email"></label>
-                    <span asp-validation-for="Email" class="ml-4 text-sm font-medium text-red-500"></span>
-                    <div class="relative">
-                        <input required pattern="@emailRegExp" asp-for="Email" type="email" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-black text-sm focus:bg-black/70 focus:ring-2 focus:ring-cyan-400/50 transition-all pr-12">
+                <div class="flex flex-col w-full mb-2 md:mb-4">
+                    <label class="text-sm text-[#ebecf7] font-medium mb-1" asp-for="Email"></label>
+                    <div class="relative w-full">
+                        <input required pattern="@emailRegExp" asp-for="Email" type="email" class="w-full block bg-transparent border border-[#a6afff] rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm transition-all box-border">
                         <partial name="../Shared/Components/_FormValidationIndicators" />
                     </div>
+                    <span asp-validation-for="Email" class="text-sm font-medium text-red-500 mt-1"></span>
                 </div>
 
-                <div class="relative mb-4">
-                    <label class="text-sm ml-4 text-black font-medium mb-2 block" asp-for="Name"></label>
-                    <span asp-validation-for="Name" class="ml-4 text-sm font-medium text-red-500"></span>
-                    <div class="relative">
-                        <input required asp-for="Name" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-black text-sm focus:bg-black/70 focus:ring-2 focus:ring-cyan-400/50 transition-all pr-12">
+                <div class="flex flex-col w-full mb-2 md:mb-4">
+                    <label class="text-sm text-[#ebecf7] font-medium mb-1" asp-for="Name"></label>
+                    <div class="relative w-full">
+                        <input required asp-for="Name" type="text" class="w-full block bg-transparent border border-[#a6afff] rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm transition-all box-border">
                         <partial name="../Shared/Components/_FormValidationIndicators" />
                     </div>
+                    <span asp-validation-for="Name" class="text-sm font-medium text-red-500 mt-1"></span>
                 </div>
 
-                <div class="h-px">
-                    <label class="text-sm ml-4 text-transparent" asp-for="LastName"></label>
-                    <span asp-validation-for="LastName" class="ml-4 text-sm font-medium text-red-500"></span>
-                    <input asp-for="LastName" type="text" class="bg-transparent">
-                </div>
-
-                <div class="relative mb-4">
-                    <label class="text-sm ml-4 text-black font-medium mb-2 block" asp-for="Message"></label>
-                    <span asp-validation-for="Message" class="ml-4 text-sm font-medium text-red-500"></span>
-                    <div class="relative">
-                        <textarea rows="3" required asp-for="Message" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-black text-sm resize-none focus:bg-black/70 focus:ring-2 focus:ring-cyan-400/50 transition-all pr-12"></textarea>
+                <div class="flex flex-col w-full mb-2 md:mb-4">
+                    <label class="text-sm text-[#ebecf7] font-medium mb-1" asp-for="Message"></label>
+                    <div class="relative w-full">
+                        <textarea rows="3" required asp-for="Message" type="text" class="w-full block bg-transparent border border-[#a6afff] rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm resize-none transition-all box-border"></textarea>
                         <partial name="../Shared/Components/_FormValidationIndicators" />
                     </div>
+                    <span asp-validation-for="Message" class="text-sm font-medium text-red-500 mt-1"></span>
                 </div>
 
-                <div class="relative mb-4">
-                    <label class="text-sm ml-4 text-black font-medium mb-2 block" asp-for="Area"></label>
-                    <span class="text-end inline ml-4 text-sm font-medium text-red-500" asp-validation-for="Area"></span>
-                    <div class="relative">
-                        <input required asp-for="Area" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-black text-sm focus:bg-black/70 focus:ring-2 focus:ring-cyan-400/50 transition-all pr-12">
+                <div class="flex flex-col w-full mb-2 md:mb-4">
+                    <label class="text-sm text-[#ebecf7] font-medium mb-1" asp-for="Area"></label>
+                    <div class="relative w-full">
+                        <input required asp-for="Area" type="text" class="w-full block bg-transparent border border-[#a6afff] rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm transition-all box-border">
                         <partial name="../Shared/Components/_FormValidationIndicators" />
                     </div>
+                    <span asp-validation-for="Area" class="text-sm font-medium text-red-500 mt-1"></span>
                 </div>
-                <button type="submit" class="bg-white px-8 py-2 rounded-[50px] block w-full text-center outline-none border-none font-semibold text-sm text-[#001021] hover:bg-gray-100 transition-colors">Skicka<i class="ms-2 fa-solid fa-paper-plane"></i></button>
+                <div class="relative w-full">
+                    <button type="submit" class="w-full block bg-white px-5 py-2 rounded-[50px] text-center outline-none border-none font-semibold text-sm text-[#001021] hover:bg-gray-100 transition-colors mt-2 box-border">Skicka<i class="ms-2 fa-solid fa-paper-plane"></i></button>
+                </div>
             </form>
         }
 

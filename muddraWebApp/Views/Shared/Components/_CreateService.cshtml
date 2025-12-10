@@ -9,19 +9,19 @@
         </div>
         <div class="relative mb-4">
             <label class="text-sm ml-4" asp-for="Title"></label>
-            <input required minlength="2" asp-for="Title" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm">
+            <input required minlength="2" asp-for="Title" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm">
             <span asp-validation-for="Title" class="ml-4 text-sm font-medium text-red-500"></span>
             <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
         </div>
         <div class="relative mb-4">
             <label class="text-sm ml-4" asp-for="Description"></label>
-            <textarea minlength="10" asp-for="Description" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm"></textarea>
+            <textarea minlength="10" asp-for="Description" type="text" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm"></textarea>
             <span asp-validation-for="Description" class="ml-4 text-sm font-medium text-red-500"></span>
             <partial name="/Views/Shared/Components/_FormValidationIndicators.cshtml" />
         </div>
         <div class="relative mb-4">
             <label class="text-sm ml-4" asp-for="ImageUrl"></label>
-            <input asp-for="ImageUrl" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-white text-sm">
+            <input asp-for="ImageUrl" class="w-full block bg-black/50 border-none rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm">
             <span asp-validation-for="ImageUrl" class="ml-4 text-sm font-medium text-red-500"></span>
         </div>
         <button type="submit" class="bg-white px-8 py-2 rounded-[50px] block w-[200px] text-center outline-none border-none font-semibold text-sm text-[#2d4a6b] hover:bg-gray-100 transition-colors">Spara</button>

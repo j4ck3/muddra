@@ -1,27 +1,19 @@
-﻿<footer class="w-full pt-8 pb-16 mt-12">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
-            <!-- Logo -->
+﻿<footer class="w-full pt-2 pb-4 mt-8 md:pt-8 md:pb-16 md:mt-24">
+    <div class="max-w-5xl mx-auto px-2 md:px-6">
+        <div class="flex flex-row justify-center items-center gap-4 md:gap-8 flex-wrap">
             <div>
-                <img src="/Assets/Imgs/App/logo_footer.png" alt="Hjälmarens Sjötjänst" loading="lazy" style="width: 100px; max-width: 100px; height: auto;" />
+                <img src="@Url.Content("~/Assets/Imgs/App/logo.png")" alt="Hjälmarens Sjötjänst" loading="lazy" class="w-[200px] max-w-[200px] h-auto" />
             </div>
             
-            <!-- Contact Info -->
-            <div class="flex flex-col items-center md:items-start gap-1">
-                <a href="tel:+46709264493" 
-                   style="color: #000 !important; text-decoration: none !important; font-size: 14px; font-weight: 500;">
-                    0709 26 44 93
-                </a>
-                <a href="mailto:contact@muddra.com" 
-                   style="color: #000 !important; text-decoration: none !important; font-size: 14px; font-weight: 500;">
-                    contact@muddra.com
-                </a>
-            </div>
+            <a href="tel:+46709264493" class="text-xs font-medium text-[#ebecf7] no-underline">
+                0709 26 44 93
+            </a>
             
-            <!-- Company Info -->
-            <div class="flex flex-col items-center md:items-start">
-                <span style="color: #000 !important; font-size: 14px; font-weight: 500;">556855-0007</span>
-            </div>
+            <a href="mailto:contact@muddra.com" class="text-xs font-medium text-[#ebecf7] no-underline">
+                contact@muddra.com
+            </a>
+            
+            <span class="text-xs font-medium text-[#ebecf7]">556855-0007</span>
         </div>
     </div>
 </footer>
