@@ -34,7 +34,7 @@
             <a asp-controller="account" asp-action="Index" 
                class="nav-link-mobile flex flex-col items-center gap-1 px-4 py-2 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/15"
                data-page="account">
-                <div class="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-600 text-white text-[10px] font-bold">
+                <div class="flex items-center justify-center w-6 h-6 rounded-full bg-linear-to-br from-cyan-500 to-cyan-600 text-white text-[10px] font-bold">
                     @(User.Identity?.Name?.Substring(0, 1).ToUpper())
                 </div>
                 <span class="text-[10px] font-medium">Profil</span>
@@ -112,7 +112,7 @@
                 <a asp-controller="account" asp-action="Index" 
                    class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-all data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-400/10"
                    data-page="account">
-                    <div class="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-600 text-white text-xs font-bold flex-shrink-0">
+                    <div class="flex items-center justify-center w-6 h-6 rounded-full bg-linear-to-br from-cyan-500 to-cyan-600 text-white text-xs font-bold flex-shrink-0">
                         @(User.Identity?.Name?.Substring(0, 1).ToUpper())
                     </div>
                     <span class="sidebar-text text-sm font-medium whitespace-nowrap transition-all duration-200 truncate">@User.Identity?.Name</span>
