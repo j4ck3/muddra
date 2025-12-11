@@ -1,5 +1,7 @@
 const validateForm = formSelector => {
     const formElement = document.querySelector(formSelector);
+    if (!formElement) return; // Exit if form not found
+    
     const passwordRegExErrorMsg = "Password must be atleast 8 characters in length and include atleast one uppercase letter, one lowercase letter, one number, and one special character "
     const validationOptions = [
         {
@@ -52,23 +54,30 @@ const validateForm = formSelector => {
     ];
 
     const validateSingleFormGroup = formGroup => {
-        const label = formGroup.querySelector('label');
+        // formGroup might be .relative container - get parent for label and errormsg
+        const parentGroup = formGroup.classList.contains('relative') ? formGroup.parentElement : formGroup;
+        
+        const label = parentGroup.querySelector('label');
         const input = formGroup.querySelector('input, textarea, select');
-        const errorContainer = formGroup.querySelector('.errormsg');
+        const errorContainer = parentGroup.querySelector('.errormsg');
         const errorIcon = formGroup.querySelector('.icon-error');
         const successIcon = formGroup.querySelector('.icon-success');
+        
+        if (!input || !errorIcon || !successIcon) return;
+        
         let formGroupError = false;
         for (const option of validationOptions) {
             if (input.hasAttribute(option.attribute) && !option.isValid(input)) {
-                errorContainer.textContent = option.errorMessage(input, label);
+                if (errorContainer) errorContainer.textContent = option.errorMessage(input, label);
                 errorIcon.classList.remove('hidden')
                 successIcon.classList.add('hidden')
                 formGroupError = true;
+                break;
             }
         }
 
         if (!formGroupError) {
-            errorContainer.textContent = '',
+            if (errorContainer) errorContainer.textContent = '';
             errorIcon.classList.add('hidden')
             successIcon.classList.remove('hidden')
         }

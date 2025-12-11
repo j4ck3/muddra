@@ -48,7 +48,7 @@
 
         @if (!TempData.ContainsKey("SuccessMessage"))
         {
-            <form class="validate-form w-[600px] max-w-full h-[70dvh] bg-transparent box-border" asp-action="Index" asp-controller="Home" method="POST" novalidate>
+            <form class="validate-form w-[600px] max-w-full h-[70dvh] bg-transparent box-border" asp-action="Index" asp-controller="Home" method="POST">
                 <h2 class="mt-4 md:mt-8 mb-3 md:mb-4 text-left text-lg md:text-xl font-light text-[#ebecf7]/90">Skicka oss ett medelande</h2>
                 @if (!Html.ViewData.ModelState.IsValid)
                 {
@@ -65,6 +65,7 @@
                         <input required pattern="@emailRegExp" asp-for="Email" type="email" class="w-full block bg-transparent border border-[#a6afff] rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm transition-all box-border">
                         <partial name="../Shared/Components/_FormValidationIndicators" />
                     </div>
+                    <span class="errormsg text-right pl-2.5 text-xs text-red-500 block"></span>
                     <span asp-validation-for="Email" class="text-sm font-medium text-red-500 mt-1"></span>
                 </div>
 
@@ -74,6 +75,7 @@
                         <input required asp-for="Name" type="text" class="w-full block bg-transparent border border-[#a6afff] rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm transition-all box-border">
                         <partial name="../Shared/Components/_FormValidationIndicators" />
                     </div>
+                    <span class="errormsg text-right pl-2.5 text-xs text-red-500 block"></span>
                     <span asp-validation-for="Name" class="text-sm font-medium text-red-500 mt-1"></span>
                 </div>
 
@@ -83,6 +85,7 @@
                         <textarea rows="3" required asp-for="Message" type="text" class="w-full block bg-transparent border border-[#a6afff] rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm resize-none transition-all box-border"></textarea>
                         <partial name="../Shared/Components/_FormValidationIndicators" />
                     </div>
+                    <span class="errormsg text-right pl-2.5 text-xs text-red-500 block"></span>
                     <span asp-validation-for="Message" class="text-sm font-medium text-red-500 mt-1"></span>
                 </div>
 
@@ -92,6 +95,7 @@
                         <input required asp-for="Area" type="text" class="w-full block bg-transparent border border-[#a6afff] rounded-[20px] px-5 py-2.5 outline-none text-[#ebecf7] text-sm transition-all box-border">
                         <partial name="../Shared/Components/_FormValidationIndicators" />
                     </div>
+                    <span class="errormsg text-right pl-2.5 text-xs text-red-500 block"></span>
                     <span asp-validation-for="Area" class="text-sm font-medium text-red-500 mt-1"></span>
                 </div>
                 <div class="relative w-full">
